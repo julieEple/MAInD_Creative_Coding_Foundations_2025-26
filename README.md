@@ -1,0 +1,2 @@
+# MAInD_Creative_Coding_Foundations_2025-26
+School projects
