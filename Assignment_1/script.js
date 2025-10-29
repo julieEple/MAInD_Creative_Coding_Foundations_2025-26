@@ -84,3 +84,17 @@ function saveNote(note){ //maybe I´ll finish later if time
 
 }
 
+function shuffleNotes(){
+    const container = document.querySelector(".all-notes");
+    const notes = Array.from(container.children);
+
+    for (let i = notes.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [notes[i], notes[j]] = [notes[j], notes[i]]; // proper random shuffle of the list items
+        
+    }
+
+    container.innerHTML = "";
+    notes.forEach(note => container.appendChild(note));
+}
+
