@@ -49,6 +49,7 @@
 
 /* note */
 .note-card {
+    transform: rotate(12deg);
     display: flex;
     background-color: #9c6644;
     padding: 1rem;

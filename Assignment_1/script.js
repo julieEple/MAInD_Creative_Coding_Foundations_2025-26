@@ -24,11 +24,13 @@ function addNote(){
                 </div>  
             </div>
   `;
-  const buttonIds = ["green", "brown", "yellow", "pink"];
-  const randomId = buttonIds[Math.floor(Math.random() * buttonIds.length)];
-  changeColor(randomId, note);
-  
-  container.appendChild(note);
+    const randomRotation = (Math.random() * 20) - 10; 
+    note.style.transform = `rotate(${randomRotation}deg)`;
+    const buttonIds = ["green", "brown", "yellow", "pink"];
+    const randomId = buttonIds[Math.floor(Math.random() * buttonIds.length)];
+    changeColor(randomId, note);
+    
+    container.appendChild(note);
 }
 
 function changeColor(buttonId, note){
