@@ -1,0 +1,86 @@
+* {
+    color: #283618;
+    background-color: #69A0C8;
+}
+
+@font-face {
+    font-family: "Supreme Donuts";
+    src: url("../assets/Supreme Donuts.otf") format("opentype");
+
+    font-family: "9XUrlJNmn0LPFl-pOhYEd2NJ";
+    src: url("../assets/9XUrlJNmn0LPFl-pOhYEd2NJ.ttf") format("opentype");
+
+    font-family: "vite";
+    src: url("../assets/vite.ttf") format("opentype");
+
+    font-weight: normal;
+    font-style: normal;
+  }
+
+/* Julies notes + button */
+.options-row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.options-row h1{
+    font-family: "9XUrlJNmn0LPFl-pOhYEd2NJ", sans-serif;
+    /* font-family: "PP Neue Montreal Bold", sans-serif; */
+    font-weight: 2000;
+    font-size: 7rem;
+    color: #ffcfd2;
+}
+/* button  */
+.options-row #newNote{
+    padding: 1rem;
+    width: 3%;
+    align-content: center;
+}
+
+/* container/list of notes */
+.all-notes {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+/* note */
+.note-card {
+    display: flex;
+    background-color: #9c6644;
+    padding: 1rem;
+    margin: 1rem;
+    width: 20%;
+    aspect-ratio: 1 / 1;
+}
+
+.note-card .note-card-body{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1; 
+}
+
+
+.note-card textarea{
+    background-color: #9c6644;
+    font-family: "vite", sans-serif;
+    font-size: 2rem;
+    border: none; 
+    width: 100%;  
+    height: auto;
+    flex-grow: 1;
+}
+
+.note-buttons{
+    background-color: #9c6644;
+}
+
+.note-card button {
+    margin-top: 0.5rem;    
+    align-self: flex-end;  
+  }

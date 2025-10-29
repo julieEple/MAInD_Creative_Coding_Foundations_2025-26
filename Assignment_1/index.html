@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Julie´s notepad</title>
+</head>
+<body>
+    <script src="script.js"></script>
+
+
+     <!-- Making a full row incase I want to add options for the note on the same row. Will delete if I don´t -->
+ <div class="options-row">
+    <h1> JULIE´S NOTEPAD </h1>
+    <button id="newNote" onclick="addNote()"> New note </button>
+</div>
+
+    
+    <ul class="all-notes">  <!-- Where all the notes should appear  -->
+        <li class="note-card"> <!--The note-->
+            <div class="note-card-body"> <!--Body contains buttons and textarea-->
+                <textarea>  </textarea>
+                <div class="note-buttons">
+                    <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
+                    <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>
+                    <button id="green" onclick="changeColor(this.id, this.closest('.note-card'))"> green </button>
+                    <button id="yellow" onclick="changeColor(this.id, this.closest('.note-card'))">yellow</button>
+                    <button id="delete" onclick="deleteNote(this.closest('.note-card'))"> delete </button>
+                    <!-- <button id="save" onclick="saveNote(this.closest('.note-card'))">save</button> -->
+                </div>  
+            </div>
+        </li> 
+    </ul>
+
+
+    
+</body>
+</html>
