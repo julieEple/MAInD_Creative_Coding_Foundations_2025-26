@@ -25,6 +25,7 @@ function addNote(){
             </div>
   `;
   const buttonIds = ["green", "brown", "yellow", "pink"];
+  const randomId = buttonIds[Math.floor(Math.random() * buttonIds.length)];
   changeColor(randomId, note);
   
   container.appendChild(note);
