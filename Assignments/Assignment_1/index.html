@@ -9,20 +9,26 @@
 </head>
 
 <body>
-     <!-- Making a full row incase I want to add options for the note on the same row. Will delete if I don´t -->
-     <h1> JULIE´S NOTEPAD </h1>
- <div class="options-row">
-    <button id="newNote" onclick="addNote()"> New note </button>
-    <button id="shuffle" onclick="shuffleNotes()"> Shuffle </button> 
-    <button id="listview" onclick="listview()">Shift View</button>
-    
-</div>
+
+    <header>
+        <h1> JULIE´S NOTEPAD </h1>
+        <div class="options-row">
+        <button id="new-note" onclick="addNote()"> New note </button>
+        <button id="shuffle" onclick="shuffleNotes()"> Shuffle </button> 
+        <button id="list-view" onclick="shiftview()">Shift View</button>
+
+        <!-- <div id="view-toggle-container">
+            <button id="list-view" onclick="listview()">Shift View</button>
+            <button id="card-view" onclick="cardview()">Shift View</button>
+        </div> -->
+        </div>
+    </header>
 
     
     <ul class="all-notes">  <!-- Where all the notes should appear  -->
         <li class="note-card"> <!--The note-->
             <div class="note-card-body"> <!--Body contains buttons and textarea-->
-                <!-- <img src="assets/pngwing.com.png" alt="pin"> -->
+                <img src="assets/imgs/pngwing.com.png" alt="pin">
                 <textarea id="title">  </textarea>
                 <textarea id="breadtext">  </textarea>
                 <div class="note-buttons">

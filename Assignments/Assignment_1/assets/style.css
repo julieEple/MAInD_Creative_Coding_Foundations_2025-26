@@ -28,7 +28,6 @@
     align-items: center;
     justify-content: center;
     column-gap: 1em;
-    
 }
 
 
@@ -47,8 +46,7 @@
     width: 10%;
     align-content: center;
     text-align: center;
-
-    
+ 
 }
 
 /* container/list of notes */
@@ -71,9 +69,10 @@
 }
 
 .note-card img{
+    transform: rotate(inherit);
     display: block;
     width: 15%;
-    background-color: #9c6644;
+    background-color: inherit;
     align-self: center;
 
 }
@@ -84,13 +83,14 @@
     width: 100%;
     height: 100%;
     flex-grow: 1; 
+    background-color: #9c6644;
 }
 
 
 .note-card textarea{
     display: flex;
     flex-direction: column;
-    background-color: #9c6644;
+    background-color: inherit;
     font-family: "vite", sans-serif;
     font-size: 2rem;
     border: none; 
@@ -106,7 +106,7 @@
 
 
 .note-buttons{
-    background-color: #9c6644;
+    background-color: inherit;
 }
 
 .note-card button {

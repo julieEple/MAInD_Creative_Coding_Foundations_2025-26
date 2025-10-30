@@ -13,6 +13,7 @@ function addNote(){
 // details of what the note should contain (code copied from index note card body)
     note.innerHTML = `
       <div class="note-card-body"> <!--Body contains buttons and textarea-->
+                      <img src="assets/imgs/pngwing.com.png" alt="pin">
                 <textarea>  </textarea>
                 <div class="note-buttons">
                     <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
@@ -37,21 +38,25 @@ function changeColor(buttonId, note){
     if (!note) return;
     const textarea = note.querySelector("textarea");
     const noterow = note.querySelector(".note-buttons");
+    const background = note.querySelector(".note-card-body");
 
 
     if (buttonId === "green"){
         note.style.backgroundColor = "#a3b18a";
+        background.style.backgroundColor = "#a3b18a";
         textarea.style.backgroundColor = "#a3b18a";
         noterow.style.backgroundColor = "#a3b18a";
     } 
     if (buttonId === "brown") {
         note.style.backgroundColor = "#9c6644";
+        background.style.backgroundColor = "#9c6644";
         textarea.style.backgroundColor = "#9c6644";
         noterow.style.backgroundColor = "#9c6644";
 
     } 
     if (buttonId === "yellow") {
         note.style.backgroundColor = "#f4d58d";
+        background.style.backgroundColor = "#f4d58d";
         textarea.style.backgroundColor = "#f4d58d";
         noterow.style.backgroundColor = "#f4d58d";
 
@@ -59,6 +64,7 @@ function changeColor(buttonId, note){
     }
     if (buttonId === "pink") {
         note.style.backgroundColor = "#f4acb7";
+        background.style.backgroundColor = "#f4acb7";
         textarea.style.backgroundColor = "#f4acb7";
         noterow.style.backgroundColor = "#f4acb7";
 
