@@ -17,6 +17,7 @@
         <button id="shuffle" onclick="shuffleNotes()"> Shuffle </button> 
         <button id="list-view" onclick="shiftview()">Shift View</button>
 
+
         <!-- <div id="view-toggle-container">
             <button id="list-view" onclick="listview()">Shift View</button>
             <button id="card-view" onclick="cardview()">Shift View</button>
@@ -25,12 +26,12 @@
     </header>
 
     
-    <ul class="all-notes">  <!-- Where all the notes should appear  -->
+    <ul id="all-notes" class="card-view">  <!-- Where all the notes should appear  -->
         <li class="note-card"> <!--The note-->
             <div class="note-card-body"> <!--Body contains buttons and textarea-->
                 <img src="assets/imgs/pngwing.com.png" alt="pin">
-                <textarea id="title">  </textarea>
-                <textarea id="breadtext">  </textarea>
+                <textarea id="title"> Title </textarea>
+                <textarea id="breadtext"> ... </textarea>
                 <div class="note-buttons">
                     <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
                     <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>

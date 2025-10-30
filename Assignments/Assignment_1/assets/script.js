@@ -1,5 +1,5 @@
 function addNote(){
-    const container = document.getElementsByClassName("all-notes")[0]; 
+    const container = document.getElementById("all-notes"); 
 
     // adding some tests to undertsand what is happeneing as I build the code 
     if (!container) {
@@ -12,18 +12,19 @@ function addNote(){
 
 // details of what the note should contain (code copied from index note card body)
     note.innerHTML = `
-      <div class="note-card-body"> <!--Body contains buttons and textarea-->
-                      <img src="assets/imgs/pngwing.com.png" alt="pin">
-                <textarea>  </textarea>
-                <div class="note-buttons">
-                    <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
-                    <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>
-                    <button id="green" onclick="changeColor(this.id, this.closest('.note-card'))"> green </button>
-                    <button id="yellow" onclick="changeColor(this.id, this.closest('.note-card'))">yellow</button>
-                    <button id="delete" onclick="deleteNote(this.closest('.note-card'))"> delete </button>
-                    <!-- <button id="save" onclick="saveNote(this.closest('.note-card'))">save</button> -->
-                </div>  
-            </div>
+        <div class="note-card-body"> <!--Body contains buttons and textarea-->
+            <img src="assets/imgs/pngwing.com.png" alt="pin">
+            <textarea id="title">  </textarea>
+            <textarea id="breadtext">  </textarea>
+            <div class="note-buttons">
+                <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
+                <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>
+                <button id="green" onclick="changeColor(this.id, this.closest('.note-card'))"> green </button>
+                <button id="yellow" onclick="changeColor(this.id, this.closest('.note-card'))">yellow</button>
+                <button id="delete" onclick="deleteNote(this.closest('.note-card'))"> delete </button>
+                <!-- <button id="save" onclick="saveNote(this.closest('.note-card'))">save</button> -->
+            </div>  
+        </div>
   `;
     const randomRotation = (Math.random() * 20) - 10; 
     note.style.transform = `rotate(${randomRotation}deg)`;
@@ -80,18 +81,9 @@ function deleteNote(note){
       note.remove();
 }
 
-function saveNote(note){ //maybe I´ll finish later if time
-    if (!note) return; //shoudl not be possible to save a empty note
-    const textarea = note.querySelector("textarea");
-    const noteText = textarea.value;
-    const noteColor = note.style.backgroundColor;
-
-    const textStorage = { text: noteText, color: noteColor };
-
-}
 
 function shuffleNotes(){
-    const container = document.querySelector(".all-notes");
+    const container = document.getElementById("all-notes"); 
     const notes = Array.from(container.children);
 
     for (let i = notes.length - 1; i > 0; i--) {
@@ -105,4 +97,16 @@ function shuffleNotes(){
 }
 
 
+function shiftview() {
+        const notesContainer = document.getElementById("all-notes");
+      
+        if (notesContainer.classList.contains("card-view")) {
+          notesContainer.classList.remove("card-view");
+          notesContainer.classList.add("list-view");
+        } else {
+          notesContainer.classList.remove("list-view");
+          notesContainer.classList.add("card-view");
+        }
 
+  }
+    
