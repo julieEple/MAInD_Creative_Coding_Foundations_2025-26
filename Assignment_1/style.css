@@ -20,24 +20,29 @@
 /* Julies notes + button */
 .options-row{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     
 }
 
-.options-row h1{
+
+ h1{
     font-family: "9XUrlJNmn0LPFl-pOhYEd2NJ", sans-serif;
     /* font-family: "PP Neue Montreal Bold", sans-serif; */
     font-weight: 2000;
     font-size: 7rem;
     color: #ffcfd2;
+    text-align: center;
+
 }
 /* button  */
-.options-row #newNote{
+.options-row button{
     padding: 1rem;
-    width: 3%;
+    width: 10%;
     align-content: center;
+    text-align: center;
+    
 }
 
 /* container/list of notes */
@@ -57,6 +62,13 @@
     width: 20%;
     aspect-ratio: 1 / 1;
     transition: all 0.3s ease;
+}
+
+.note-card img{
+    display: block;
+    width: 15%;
+    background-color: #9c6644;
+    align-self: center;
 
 }
 
@@ -87,3 +99,4 @@
     margin-top: 0.5rem;    
     align-self: flex-end;  
   }
+

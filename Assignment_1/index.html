@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>Julie´s notepad</title>
 </head>
+
 <body>
-    <script src="script.js"></script>
-
-
      <!-- Making a full row incase I want to add options for the note on the same row. Will delete if I don´t -->
+     <h1> JULIE´S NOTEPAD </h1>
  <div class="options-row">
-    <h1> JULIE´S NOTEPAD </h1>
     <button id="newNote" onclick="addNote()"> New note </button>
-    <button id="sortRow" onclick="sortNotes()"> Sort </button> 
     <button id="shuffle" onclick="shuffleNotes()"> Shuffle </button> 
+    <button id="listview" onclick="listview()">Shift View</button>
     
 </div>
 
@@ -23,6 +22,7 @@
     <ul class="all-notes">  <!-- Where all the notes should appear  -->
         <li class="note-card"> <!--The note-->
             <div class="note-card-body"> <!--Body contains buttons and textarea-->
+                <!-- <img src="assets/pngwing.com.png" alt="pin"> -->
                 <textarea>  </textarea>
                 <div class="note-buttons">
                     <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
