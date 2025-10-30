@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js"></script>
     <title>Julie´s notepad</title>
 </head>
 
@@ -23,7 +23,8 @@
         <li class="note-card"> <!--The note-->
             <div class="note-card-body"> <!--Body contains buttons and textarea-->
                 <!-- <img src="assets/pngwing.com.png" alt="pin"> -->
-                <textarea>  </textarea>
+                <textarea id="title">  </textarea>
+                <textarea id="breadtext">  </textarea>
                 <div class="note-buttons">
                     <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
                     <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>
