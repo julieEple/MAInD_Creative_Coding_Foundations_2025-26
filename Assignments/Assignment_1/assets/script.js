@@ -10,29 +10,44 @@ function addNote(){
     const note = document.createElement("li");
     note.classList.add("note-card");
 
-// details of what the note should contain (code copied from index note card body)
-    note.innerHTML = `
-        <div class="note-card-body"> <!--Body contains buttons and textarea-->
-            <img src="assets/imgs/pngwing.com.png" alt="pin">
-            <textarea id="title">  </textarea>
-            <textarea id="breadtext">  </textarea>
-            <div class="note-buttons">
-                <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
-                <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>
-                <button id="green" onclick="changeColor(this.id, this.closest('.note-card'))"> green </button>
-                <button id="yellow" onclick="changeColor(this.id, this.closest('.note-card'))">yellow</button>
-                <button id="delete" onclick="deleteNote(this.closest('.note-card'))"> delete </button>
-                <!-- <button id="save" onclick="saveNote(this.closest('.note-card'))">save</button> -->
-            </div>  
-        </div>
-  `;
     const randomRotation = (Math.random() * 20) - 10; 
-    note.style.transform = `rotate(${randomRotation}deg)`;
+    // note.style.transform = `rotate(${randomRotation}deg)`;
+    //should be in css not js 
+        
     const buttonIds = ["green", "brown", "yellow", "pink"];
-    const randomId = buttonIds[Math.floor(Math.random() * buttonIds.length)];
-    changeColor(randomId, note);
+    const randomColor = buttonIds[Math.floor(Math.random() * buttonIds.length)];
+    // changeColor(randomColor, note);
+
+    note.dataset.rotation = randomRotation;
+    note.dataset.color = randomColor;
+
+
+// details of what the note should contain (code copied from index note card body)
+    note.innerHTML = ` <div class="note-card-body"> <!--Body contains buttons and textarea-->
+                    <img src="assets/imgs/pngwing.com.png" alt="pin">
+                    <textarea class="title"></textarea>
+                    <textarea class="breadtext"></textarea>
+                    <div class="note-buttons">
+                        <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
+                        <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>
+                        <button id="green" onclick="changeColor(this.id, this.closest('.note-card'))"> green </button>
+                        <button id="yellow" onclick="changeColor(this.id, this.closest('.note-card'))">yellow</button>
+                        <button id="delete" onclick="deleteNote(this.closest('.note-card'))"> delete </button>
+                        <!-- <button id="save" onclick="saveNote(this.closest('.note-card'))">save</button> -->
+                    </div>  
+                </div>
+        </li> 
+  `;
+
     
-    container.appendChild(note);
+  changeColor(randomColor, note);
+
+  // teste
+  if (container.classList.contains("card-view")) {
+    note.style.transform = `rotate(${randomRotation}deg)`;
+  }
+
+  container.appendChild(note);
 }
 
 function changeColor(buttonId, note){
@@ -69,7 +84,6 @@ function changeColor(buttonId, note){
         textarea.style.backgroundColor = "#f4acb7";
         noterow.style.backgroundColor = "#f4acb7";
 
-
     }
 }
 
@@ -98,15 +112,31 @@ function shuffleNotes(){
 
 
 function shiftview() {
-        const notesContainer = document.getElementById("all-notes");
-      
-        if (notesContainer.classList.contains("card-view")) {
-          notesContainer.classList.remove("card-view");
-          notesContainer.classList.add("list-view");
-        } else {
-          notesContainer.classList.remove("list-view");
-          notesContainer.classList.add("card-view");
-        }
-
+    const container = document.getElementById("all-notes");
+  
+    if (container.classList.contains("card-view")) {
+      // bytt til list-view
+      container.classList.remove("card-view");
+      container.classList.add("list-view");
+  
+      // nullstill rotasjon
+      const notes = container.getElementsByClassName('note-card');
+      for (const note of notes) {
+        note.style.transform = "none";
+        note.style.backgroundColor = "none";
+      }
+    } else {
+      // bytt til card-view
+      container.classList.remove("list-view");
+      container.classList.add("card-view");
+  
+      // legg tilbake rotasjon
+      const notes = container.getElementsByClassName('note-card');
+      for (const note of notes) {
+        const rotation = note.dataset.rotation;
+        note.style.transform = `rotate(${rotation}deg)`;
+      }
+    }
   }
+
     

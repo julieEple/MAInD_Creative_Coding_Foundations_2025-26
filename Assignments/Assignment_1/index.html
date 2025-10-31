@@ -15,7 +15,7 @@
         <div class="options-row">
         <button id="new-note" onclick="addNote()"> New note </button>
         <button id="shuffle" onclick="shuffleNotes()"> Shuffle </button> 
-        <button id="list-view" onclick="shiftview()">Shift View</button>
+        <button id="shift-view" onclick="shiftview()">Shift View</button>
 
 
         <!-- <div id="view-toggle-container">
@@ -27,20 +27,20 @@
 
     
     <ul id="all-notes" class="card-view">  <!-- Where all the notes should appear  -->
-        <li class="note-card"> <!--The note-->
-            <div class="note-card-body"> <!--Body contains buttons and textarea-->
-                <img src="assets/imgs/pngwing.com.png" alt="pin">
-                <textarea id="title"> Title </textarea>
-                <textarea id="breadtext"> ... </textarea>
-                <div class="note-buttons">
-                    <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
-                    <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>
-                    <button id="green" onclick="changeColor(this.id, this.closest('.note-card'))"> green </button>
-                    <button id="yellow" onclick="changeColor(this.id, this.closest('.note-card'))">yellow</button>
-                    <button id="delete" onclick="deleteNote(this.closest('.note-card'))"> delete </button>
-                    <!-- <button id="save" onclick="saveNote(this.closest('.note-card'))">save</button> -->
-                </div>  
-            </div>
+        <li class="note-card" data-rotation="0" > <!--The note-->
+                <div class="note-card-body"> <!--Body contains buttons and textarea-->
+                    <img src="assets/imgs/pngwing.com.png" alt="pin">
+                    <textarea class="title"></textarea>
+                    <textarea class="breadtext"></textarea>
+                    <div class="note-buttons">
+                        <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
+                        <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>
+                        <button id="green" onclick="changeColor(this.id, this.closest('.note-card'))"> green </button>
+                        <button id="yellow" onclick="changeColor(this.id, this.closest('.note-card'))">yellow</button>
+                        <button id="delete" onclick="deleteNote(this.closest('.note-card'))"> delete </button>
+                        <!-- <button id="save" onclick="saveNote(this.closest('.note-card'))">save</button> -->
+                    </div>  
+                </div>
         </li> 
     </ul>
 
