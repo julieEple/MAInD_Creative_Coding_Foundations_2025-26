@@ -25,8 +25,8 @@ function addNote(){
 // details of what the note should contain (code copied from index note card body)
     note.innerHTML = ` <div class="note-card-body"> <!--Body contains buttons and textarea-->
                     <img src="assets/imgs/pngwing.com.png" alt="pin">
-                    <textarea class="title"></textarea>
-                    <textarea class="breadtext"></textarea>
+                    <textarea class="title"> Title</textarea>
+                    <textarea class="breadtext"> ...Whatever is on your mind</textarea>
                     <div class="note-buttons">
                         <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
                         <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>
