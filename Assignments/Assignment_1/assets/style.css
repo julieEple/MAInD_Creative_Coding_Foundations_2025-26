@@ -17,9 +17,6 @@
     font-style: normal;
   }
 
-@media only screen and (min-width: 600px){
-    
-}
 
 /* Julies notes + button */
 .options-row{
@@ -35,17 +32,17 @@
     font-family: "9XUrlJNmn0LPFl-pOhYEd2NJ", sans-serif;
     /* font-family: "PP Neue Montreal Bold", sans-serif; */
     font-weight: 2000;
-    font-size: 7rem;
+    font-size: clamp(2rem, 5vw + 1rem, 7rem);
     color: #ffcfd2;
     text-align: center;
 
 }
 
 .options-row button{
-    padding: 1rem;
-    width: 10%;
     align-content: center;
     text-align: center;
+    width: auto;
+    padding: 0.4rem 0.6rem;
  
 }
 
@@ -60,10 +57,10 @@
     transform: rotate(12);
     display: flex;
     background-color: #9c6644;
-    padding: 1rem;
-    margin: 1rem;
-    width: 20%;
-    aspect-ratio: 1 / 1;
+    padding: 0.5rem;
+    margin-bottom: 2rem !important; 
+    width: 22%;
+    aspect-ratio: 1 / 1!important;
     transition: all 0.3s ease;
 }
 
@@ -174,34 +171,24 @@ textarea::placeholder {
     font-family: "vite", sans-serif;
   }
 
-/* 480 for a smaller phone */
  
 
 
 /* tablets  */
-  @media only screen and (max-width: 800px) {
-    h1 {
-      font-size: 5rem;
-    }
-  
-    /* 2 cards per row instead of 5 (20%) */
-    #all-notes.card-view .note-card {
-      width: 25%;      
-      margin: 2%;
-    }
+  @media only screen and (max-width: 768px) {
 
-    
-    #all-notes.card-view .note-card textarea{
+    #all-notes.card-view {
         display: flex;
-        flex-direction: column;
-        background-color: inherit;
-        font-family: "vite", sans-serif;
-        font-size: 1rem;
-        border: none; 
-        width: 100%;  
-        height: auto;
-        flex-grow: 1;
-        outline: none;    
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+      }
+  
+     
+    #all-notes.card-view .note-card {
+      width: 35%;      
+      margin: 2%;
+      aspect-ratio: 1 / 1!important;
     }
 
     #all-notes.card-view .note-card textarea.title{
@@ -223,10 +210,10 @@ textarea::placeholder {
     }
   }
 
+
+  /* 480 for a smaller phone */
+
   @media only screen and (max-width: 480px) {
-    h1 {
-      font-size: 3rem!important;
-    }
 
     #all-notes.card-view {
         display: flex;
@@ -235,10 +222,10 @@ textarea::placeholder {
         justify-content: center;
       }
   
-    /* 2 cards per row instead of 5 (20%) */
     #all-notes.card-view .note-card {
       width: 70%;      
       margin: 2%;
+      aspect-ratio: 1 / 1!important;
     }
   
     .options-row button {
