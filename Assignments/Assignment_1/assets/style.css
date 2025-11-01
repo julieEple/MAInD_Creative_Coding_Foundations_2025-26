@@ -162,10 +162,10 @@
 }
 
 #all-notes.list-view .title{
-    font-size: 3rem;
+    font-size: 3em;
   }
 #all-notes.list-view .breadtext{
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 textarea::placeholder {
@@ -174,16 +174,46 @@ textarea::placeholder {
     font-family: "vite", sans-serif;
   }
 
+/* 480 for a smaller phone */
+ 
 
-  @media only screen and (max-width: 600px) {
+
+/* tablets  */
+  @media only screen and (max-width: 800px) {
     h1 {
-      font-size: 3rem;
+      font-size: 5rem;
     }
   
     /* 2 cards per row instead of 5 (20%) */
     #all-notes.card-view .note-card {
-      width: 35%;      
+      width: 25%;      
       margin: 2%;
+    }
+
+    
+    #all-notes.card-view .note-card textarea{
+        display: flex;
+        flex-direction: column;
+        background-color: inherit;
+        font-family: "vite", sans-serif;
+        font-size: 1rem;
+        border: none; 
+        width: 100%;  
+        height: auto;
+        flex-grow: 1;
+        outline: none;    
+    }
+
+    #all-notes.card-view .note-card textarea.title{
+        height: 20%;
+        resize: none;    
+        font-weight: bolder;
+    }
+
+    #all-notes.card-view .note-card textarea.breadtext{
+        resize: none; 
+        flex-grow: 1;         
+        height: 80%;
     }
   
     .options-row button {
@@ -191,4 +221,30 @@ textarea::placeholder {
       padding: 0.8rem 1rem;
       font-size: 1rem;
     }
+  }
+
+  @media only screen and (max-width: 480px) {
+    h1 {
+      font-size: 3rem!important;
+    }
+
+    #all-notes.card-view {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+      }
+  
+    /* 2 cards per row instead of 5 (20%) */
+    #all-notes.card-view .note-card {
+      width: 70%;      
+      margin: 2%;
+    }
+  
+    .options-row button {
+        width: auto;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+      }
+
   }

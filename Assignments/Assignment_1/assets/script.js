@@ -88,11 +88,8 @@ function changeColor(buttonId, note){
 }
 
 function deleteNote(note){
-    // const len = notesList.length;
-    // for (let i = 0; i < len; i++) {
-    //     console.log(notesList[i])
-    //   }
       note.remove();
+    
 }
 
 
@@ -139,4 +136,20 @@ function shiftview() {
     }
   }
 
+
+  function saveNotes() {
+    const notesContainer = document.getElementById("all-notes");
+    const notes = notesContainer.querySelectorAll(".note-card");
+  
+    const data = Array.from(notes).map(note => ({
+      title: note.querySelector(".title").value,
+      text: note.querySelector(".breadtext").value,
+      color: note.dataset.color,
+      rotation: note.dataset.rotation
+    }));
+  
+    localStorage.setItem("notesData", JSON.stringify(data));
+  }
+
+ 
     
