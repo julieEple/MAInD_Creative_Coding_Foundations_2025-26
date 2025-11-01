@@ -159,7 +159,7 @@
 }
 
 #all-notes.list-view .title{
-    font-size: 3em;
+    font-size: 2em;
   }
 #all-notes.list-view .breadtext{
     font-size: 1em;
@@ -192,15 +192,17 @@ textarea::placeholder {
     }
 
     #all-notes.card-view .note-card textarea.title{
-        height: 20%;
+        height: 25% !important;
         resize: none;    
         font-weight: bolder;
+        font-size: 2rem;
     }
 
     #all-notes.card-view .note-card textarea.breadtext{
         resize: none; 
         flex-grow: 1;         
-        height: 80%;
+        height: 75%;
+        font-size: 1rem;
     }
   
     .options-row button {
