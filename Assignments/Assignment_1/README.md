@@ -16,7 +16,10 @@ Screenshots:
     
     
     - 2 screenshots of the final result (interaction)
-    
+    <p align="center">
+        <img src="assets/screenshots/Screenshot 2025-11-01 at 17.11.09.png" width="45%" alt="Card View" />
+        <img src="assets/screenshots/Screenshot 2025-11-01 at 17.12.29.png" width="45%" alt="List View" />
+    </p>
 
 
     - Short project description (general concept, functional logic and interaction modalities, 300 characters)
