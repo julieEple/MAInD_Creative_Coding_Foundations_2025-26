@@ -155,19 +155,22 @@
     box-shadow: none !important;
     border: none !important;
     transform: none !important;
+    display: flex;
+    flex-direction: column;
 
 }
 
 #all-notes.list-view .title{
     font-size: 2em;
+    height: 20%;
   }
 #all-notes.list-view .breadtext{
     font-size: 1em;
+    height: 80%;
 }
 
 textarea::placeholder {
     color:#283618;
-    font-style: italic;
     font-family: "vite", sans-serif;
   }
 

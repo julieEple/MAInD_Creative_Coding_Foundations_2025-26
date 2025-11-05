@@ -25,8 +25,8 @@ function addNote(){
 // details of what the note should contain (code copied from index note card body)
     note.innerHTML = ` <div class="note-card-body"> <!--Body contains buttons and textarea-->
                     <img src="assets/imgs/pngwing.com.png" alt="pin">
-                    <textarea class="title"> Title</textarea>
-                    <textarea class="breadtext"> ...Whatever is on your mind</textarea>
+                     <textarea class="title" placeholder="Title"></textarea>
+                    <textarea class="breadtext" placeholder="...Whatever is on your mind"></textarea>
                     <div class="note-buttons">
                         <button id="brown" onclick="changeColor(this.id, this.closest('.note-card'))">brown</button>
                         <button id="pink" onclick="changeColor(this.id, this.closest('.note-card'))">pink</button>
@@ -151,5 +151,13 @@ function shiftview() {
     localStorage.setItem("notesData", JSON.stringify(data));
   }
 
+//eventlistener for dynamic sizing of textarea breadtext
+  document.addEventListener("input", function (event) {
+    if (event.target.matches(".breadtext")) {
+      const textarea = event.target;
+      textarea.style.height = "auto"; // nullstill høyde
+      textarea.style.height = textarea.scrollHeight + "px"; // sett ny høyde
+    }
+  });
  
     
