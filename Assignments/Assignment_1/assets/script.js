@@ -60,30 +60,19 @@ function changeColor(buttonId, note){
     if (buttonId === "green"){
         note.style.backgroundColor = "#a3b18a";
         background.style.backgroundColor = "#a3b18a";
-        textarea.style.backgroundColor = "#a3b18a";
-        noterow.style.backgroundColor = "#a3b18a";
     } 
     if (buttonId === "brown") {
         note.style.backgroundColor = "#9c6644";
         background.style.backgroundColor = "#9c6644";
-        textarea.style.backgroundColor = "#9c6644";
-        noterow.style.backgroundColor = "#9c6644";
-
     } 
     if (buttonId === "yellow") {
         note.style.backgroundColor = "#f4d58d";
         background.style.backgroundColor = "#f4d58d";
-        textarea.style.backgroundColor = "#f4d58d";
-        noterow.style.backgroundColor = "#f4d58d";
-
 
     }
     if (buttonId === "pink") {
         note.style.backgroundColor = "#f4acb7";
         background.style.backgroundColor = "#f4acb7";
-        textarea.style.backgroundColor = "#f4acb7";
-        noterow.style.backgroundColor = "#f4acb7";
-
     }
 }
 
@@ -137,19 +126,6 @@ function shiftview() {
   }
 
 
-  function saveNotes() {
-    const notesContainer = document.getElementById("all-notes");
-    const notes = notesContainer.querySelectorAll(".note-card");
-  
-    const data = Array.from(notes).map(note => ({
-      title: note.querySelector(".title").value,
-      text: note.querySelector(".breadtext").value,
-      color: note.dataset.color,
-      rotation: note.dataset.rotation
-    }));
-  
-    localStorage.setItem("notesData", JSON.stringify(data));
-  }
 
 //eventlistener for dynamic sizing of textarea breadtext
   document.addEventListener("input", function (event) {
