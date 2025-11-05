@@ -16,11 +16,12 @@ Screenshots:
     
     
     - 2 screenshots of the final result (interaction)
-### Cardview
-![Notepad Screenshot 1](assets/screenshot/Screenshot 2025-11-01 at 17.11.09.png)
 
-### Listview
-![Notepad Screenshot 2](assets/screenshot2.png)
+### 🗂️ Kortvisning
+![Kortvisning](assets/screenshots/screenshot-cardview.png)
+
+### 📋 Listevisning
+![Listevisning](assets/screenshots/screenshot-listview.png)
 
 
     - Short project description (general concept, functional logic and interaction modalities, 300 characters)
