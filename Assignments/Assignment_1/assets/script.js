@@ -6,21 +6,16 @@ function addNote(){
         console.log("test: can´t find all-notes container");
         return;
       }
-
     const note = document.createElement("li");
     note.classList.add("note-card");
 
     const randomRotation = (Math.random() * 20) - 10; 
-    // note.style.transform = `rotate(${randomRotation}deg)`;
-    //should be in css not js 
         
     const buttonIds = ["green", "brown", "yellow", "pink"];
     const randomColor = buttonIds[Math.floor(Math.random() * buttonIds.length)];
-    // changeColor(randomColor, note);
 
     note.dataset.rotation = randomRotation;
     note.dataset.color = randomColor;
-
 
 // details of what the note should contain (code copied from index note card body)
     note.innerHTML = ` <div class="note-card-body"> <!--Body contains buttons and textarea-->
@@ -39,10 +34,8 @@ function addNote(){
         </li> 
   `;
 
-    
   changeColor(randomColor, note);
 
-  // teste
   if (container.classList.contains("card-view")) {
     note.style.transform = `rotate(${randomRotation}deg)`;
   }
@@ -50,12 +43,11 @@ function addNote(){
   container.appendChild(note);
 }
 
+
 function changeColor(buttonId, note){
     if (!note) return;
-    const textarea = note.querySelector("textarea");
-    const noterow = note.querySelector(".note-buttons");
-    const background = note.querySelector(".note-card-body");
 
+    const background = note.querySelector(".note-card-body");
 
     if (buttonId === "green"){
         note.style.backgroundColor = "#a3b18a";
@@ -89,9 +81,7 @@ function shuffleNotes(){
     for (let i = notes.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [notes[i], notes[j]] = [notes[j], notes[i]]; // proper random shuffle of the list items
-        
     }
-
     container.innerHTML = "";
     notes.forEach(note => container.appendChild(note));
 }
@@ -101,22 +91,22 @@ function shiftview() {
     const container = document.getElementById("all-notes");
   
     if (container.classList.contains("card-view")) {
-      // bytt til list-view
+      // change to list-view
       container.classList.remove("card-view");
       container.classList.add("list-view");
   
-      // nullstill rotasjon
+      // remove rotation
       const notes = container.getElementsByClassName('note-card');
       for (const note of notes) {
         note.style.transform = "none";
         note.style.backgroundColor = "none";
       }
     } else {
-      // bytt til card-view
+      // change to card-view
       container.classList.remove("list-view");
       container.classList.add("card-view");
   
-      // legg tilbake rotasjon
+      // add rotation
       const notes = container.getElementsByClassName('note-card');
       for (const note of notes) {
         const rotation = note.dataset.rotation;
@@ -128,12 +118,12 @@ function shiftview() {
 
 
 //eventlistener for dynamic sizing of textarea breadtext
-  document.addEventListener("input", function (event) {
-    if (event.target.matches(".breadtext")) {
-      const textarea = event.target;
-      textarea.style.height = "auto"; // nullstill høyde
-      textarea.style.height = textarea.scrollHeight + "px"; // sett ny høyde
-    }
-  });
+document.addEventListener("input", function (event) {
+  if (event.target.matches(".breadtext")) {
+    const textarea = event.target;
+    textarea.style.height = "auto"; // nullstill høyde
+    textarea.style.height = textarea.scrollHeight + "px"; // sett ny høyde
+  }
+});
  
     

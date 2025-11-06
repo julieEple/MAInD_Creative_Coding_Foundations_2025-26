@@ -102,13 +102,21 @@
     height: 15%;
     resize: none;    
     font-weight: bolder;
+    color: #283618;
+
 }
 
 #all-notes.card-view .note-card textarea.breadtext{
     resize: none; 
     flex-grow: 1;         
     height: 90%;
+    color: #283618;
 }
+
+#all-notes.card-view textarea::placeholder {
+  color: #283618;
+  font-family: "vite", sans-serif;
+  }
 
 #all-notes.card-view .note-buttons{
     background-color: inherit;
@@ -163,15 +171,18 @@
 #all-notes.list-view .title{
     font-size: 2em;
     height: 20%;
+    color: #ffcfd2;
   }
 #all-notes.list-view .breadtext{
     font-size: 1em;
     height: 80%;
+    color: #ffcfd2;
+
 }
 
-textarea::placeholder {
-    color:#283618;
-    font-family: "vite", sans-serif;
+#all-notes.list-view textarea::placeholder {
+  color: #ffcfd2;
+  font-family: "vite", sans-serif;
   }
 
  
