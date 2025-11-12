@@ -1,0 +1,52 @@
+
+  #container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #grid {
+    display: grid;
+    grid-template-columns: repeat(12, 40px);
+    grid-template-rows: repeat(12, 40px);
+    gap: 0;
+    margin: 20px;
+  }
+  
+  .cell {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #2f2323;
+    box-sizing: border-box;
+  }
+  
+  /* direction buttons */
+
+
+  .button-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    margin: 20px auto;
+  }
+  
+  .button-layout button {
+    width: 40px;
+    height: 40px;
+    background: #efd808;
+    border: 2px solid #888;
+    border-radius: 8px;
+    font-size: 20px;
+    margin: 2px;
+  }
+  
+  .middle-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .middle-row .center {
+    width: 40px; /* empty space between left and right */
+  }
+  
