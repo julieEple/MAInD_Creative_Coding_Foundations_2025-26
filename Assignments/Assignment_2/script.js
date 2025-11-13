@@ -85,6 +85,15 @@ function move() {
     if (dir === "down") newHead.rc++;
     if (dir === "right") newHead.cc++;
     if (dir === "left") newHead.cc--;
+
+    //check if head is moving outside of grid
+
+    if (
+        newHead.rc < 0 || newHead.rc >= grid_size || newHead.cc < 0 || newHead.cc >= grid_size) {
+        restartGame();
+        return; 
+      }
+
   
     snake.unshift(newHead); // new head to animate movement 
 
@@ -113,7 +122,7 @@ function move() {
     if(crash == true){
         console.log("den krsæjet")
         restartGame();
-    }
+    }    
     
     showSnake();
   }
