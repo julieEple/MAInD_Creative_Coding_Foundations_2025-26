@@ -95,15 +95,11 @@ function move() {
   
 
 
-
-function eatApple(){
-
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     makeGrid();     // create the grid first
     makeApple(); //fill the apple list with cells
-    // showSnake();    // then draw the snake on it
-    move(); //will be called by thread or listener, but here now so it can be tested
+    showSnake();    // then draw the snake on it
+    setInterval(move, 1000);
+    
     
 });
