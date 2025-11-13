@@ -5,6 +5,7 @@ const cells = []; //2D array of rows with columns
 
 let apples = [];
 let dir = "up";
+let score = "0";
 
 
 let snake = [
@@ -85,14 +86,30 @@ function move() {
     if (dir === "right") newHead.cc++;
     if (dir === "left") newHead.cc--;
   
-    snake.unshift(newHead);
+    snake.unshift(newHead); // new head to animate movement 
+
+    // check if snake collides with apple
+    let ate = false; 
+    for (let i = 0; i < apples.length; i++) {
+      const apple = apples[i];
+      if (apple.rc === newHead.rc && apple.cc === newHead.cc) {
+        eatApple(i); 
+        ate = true;
+        break;
+      }
+    }
   
-    snake.pop();
+//only remove tail if we don´t eat apple (if we eat apple the snake grows)
+    if (!ate) snake.pop();
   
     showSnake();
   }
   
 
+function eatApple(apple){
+        apples.splice(apple, 1);
+        
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     makeGrid();     // create the grid first
