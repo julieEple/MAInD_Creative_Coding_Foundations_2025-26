@@ -120,7 +120,7 @@ function move() {
   
 
 function restartGame(){
-    reload();
+    location.reload();
 }
 
 function eatApple(apple){
