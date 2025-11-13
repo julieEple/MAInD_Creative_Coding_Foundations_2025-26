@@ -5,7 +5,7 @@ const cells = []; //2D array of rows with columns
 
 let apples = [];
 let dir = "up";
-let score = "0";
+const amountOfApples=3;
 
 
 let snake = [
@@ -59,7 +59,7 @@ function showSnake(){
 }
 
 function makeApple(){
-    while (apples.length < 3) {
+    while (apples.length < amountOfApples) {
         const randR = Math.floor(Math.random() * grid_size);
         const randC = Math.floor(Math.random() * grid_size);
 
@@ -88,7 +88,7 @@ function move() {
   
     snake.unshift(newHead); // new head to animate movement 
 
-    // check if snake collides with apple
+    // check if snake collides with apple = no tail removed 
     let ate = false; 
     for (let i = 0; i < apples.length; i++) {
       const apple = apples[i];
@@ -108,15 +108,18 @@ function move() {
 
 function eatApple(apple){
         apples.splice(apple, 1);
+        score++;
+
+        makeApple();
         
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     makeGrid();     // create the grid first
     makeApple(); //fill the apple list with cells
-    showSnake();    // then draw the snake on it
-    setInterval(move, 1000);
-    
+    showSnake();    // then draw the snake
+    setInterval(move, 500);
+
 //make button panel so I can change directons
     document.getElementById("up").addEventListener("click", () => dir = "up");
     document.getElementById("down").addEventListener("click", () => dir = "down");
