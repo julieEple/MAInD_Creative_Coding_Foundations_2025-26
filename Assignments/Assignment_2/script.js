@@ -1,9 +1,10 @@
 const grid = document.getElementById('grid');
-const grid_size = 12;
+const grid_size = 12; //maybe let user choose level which will be defined by gridsize (harder with 40x40 fex)
 const cells = []; //2D array of rows with columns
 // Access a cell by CELLS[row][col]
 
 let apples = [];
+let dir = "up";
 
 
 let snake = [
@@ -76,12 +77,33 @@ function makeApple(){
     }
 }
 
-function move(){
+function move() {
+    let head = snake[0];
+    let newHead = { rc: head.rc, cc: head.cc };
+  
+    if (dir === "up") newHead.rc--;
+    if (dir === "down") newHead.rc++;
+    if (dir === "right") newHead.cc++;
+    if (dir === "left") newHead.cc--;
+  
+    snake.unshift(newHead);
+  
+    snake.pop();
+  
+    showSnake();
+  }
+  
+
+
+
+function eatApple(){
 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     makeGrid();     // create the grid first
-    makeApple();
-    showSnake();    // then draw the snake on it
+    makeApple(); //fill the apple list with cells
+    // showSnake();    // then draw the snake on it
+    move(); //will be called by thread or listener, but here now so it can be tested
+    
 });
