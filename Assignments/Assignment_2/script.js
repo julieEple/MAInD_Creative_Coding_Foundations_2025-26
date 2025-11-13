@@ -98,13 +98,30 @@ function move() {
         break;
       }
     }
-  
 //only remove tail if we don´t eat apple (if we eat apple the snake grows)
     if (!ate) snake.pop();
-  
+
+//check if head is crashing with body (head cooridnates == any of the other array coordinates)
+    let crash = false;
+    for (let i = 1; i < snake.length; i++) {
+        const part = snake[i];
+        if (snake[0].rc === part.rc && snake[0].cc === part.cc) {
+          crash = true;
+          break;
+        }
+      }
+    if(crash == true){
+        console.log("den krsæjet")
+        restartGame();
+    }
+    
     showSnake();
   }
   
+
+function restartGame(){
+    reload();
+}
 
 function eatApple(apple){
         apples.splice(apple, 1);
@@ -116,7 +133,7 @@ function eatApple(apple){
 
 document.addEventListener('DOMContentLoaded', () => {
     makeGrid();     // create the grid first
-    makeApple(); //fill the apple list with cells
+    makeApple(); //fill the apple list with cells/apples
     showSnake();    // then draw the snake
     setInterval(move, 500);
 
