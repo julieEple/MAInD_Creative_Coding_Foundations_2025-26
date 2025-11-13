@@ -14,7 +14,6 @@ let snake = [
     ];
 
 
-
 //creating grid 
 function makeGrid(){
     for (let r = 0; r < grid_size; r++) { //will go through every row and all the columns it contains
@@ -101,5 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
     showSnake();    // then draw the snake on it
     setInterval(move, 1000);
     
+//make button panel so I can change directons
+    document.getElementById("up").addEventListener("click", () => dir = "up");
+    document.getElementById("down").addEventListener("click", () => dir = "down");
+    document.getElementById("left").addEventListener("click", () => dir = "left");
+    document.getElementById("right").addEventListener("click", () => dir = "right");
+  
+    // also add keyboard 
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowUp") dir = "up";
+      if (event.key === "ArrowDown") dir = "down";
+      if (event.key === "ArrowLeft") dir = "left";
+      if (event.key === "ArrowRight") dir = "right";
+    });
     
 });
