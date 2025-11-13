@@ -2,6 +2,10 @@ const grid = document.getElementById('grid');
 const grid_size = 12;
 const cells = []; //2D array of rows with columns
 // Access a cell by CELLS[row][col]
+
+let apples = [];
+
+
 let snake = [
     {cc: 5, rc: 5}, // head -- column coordinate and row coordinate
     {cc: 5, rc: 6},
@@ -28,7 +32,7 @@ function makeGrid(){
 function showSnake(){
     for(let r = 0; r<grid_size; r++){
         for(let c=0; c<grid_size; c++){
-            cells[r][c].style.background=''; //empty cell
+            cells[r][c].style.background=''; //empty cell, so that 
         }
     }
     for (let i = 0; i < snake.length; i++) { //go through every part of the snake (every cell element)
@@ -43,9 +47,41 @@ function showSnake(){
         }
       }
 
+      // Draw the apples aswell use emoji later🍎
+    for (let i = 0; i < apples.length; i++) {
+        let apple = apples[i];
+        let r = apple.rc;
+        let c = apple.cc;
+        cells[r][c].style.background = 'red';
+    }
+
+}
+
+function makeApple(){
+    while (apples.length < 3) {
+        const randR = Math.floor(Math.random() * grid_size);
+        const randC = Math.floor(Math.random() * grid_size);
+
+        // make sure the apple is not places on the snake hehe
+        let onSnake = false;
+        for (let part of snake) {
+          if (part.rc === randR && part.cc === randC) {
+            onSnake = true;
+            break; // breaks if true
+          }
+        }
+        if (!onSnake) {
+            apples.push({ rc: randR, cc: randC });
+          }
+    }
+}
+
+function move(){
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     makeGrid();     // create the grid first
+    makeApple();
     showSnake();    // then draw the snake on it
 });
