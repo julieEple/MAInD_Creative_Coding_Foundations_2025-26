@@ -35,7 +35,9 @@ function makeGrid(){
 function showSnake(){
     for(let r = 0; r<grid_size; r++){
         for(let c=0; c<grid_size; c++){
-            cells[r][c].style.background=''; //empty cell, so that 
+            // cells[r][c].style.background=''; //empty cell, so that 
+            cells[r][c].textContent=''; //empty cell, so that 
+
         }
     }
     for (let i = 0; i < snake.length; i++) { //go through every part of the snake (every cell element)
@@ -44,9 +46,12 @@ function showSnake(){
         let c = snakepart.cc; 
     
         if (i === 0) {
-          cells[r][c].style.background = 'darkgreen'; // head
+        // cells[r][c].style.background = 'darkgreen'; // head
+        cells[r][c].textContent='👹';
         } else {
-          cells[r][c].style.background = 'limegreen'; // body
+        //   cells[r][c].style.background = 'limegreen'; // body
+        cells[r][c].textContent='🟥';
+
         }
       }
 
@@ -55,7 +60,7 @@ function showSnake(){
         let apple = apples[i];
         let r = apple.rc;
         let c = apple.cc;
-        cells[r][c].style.background = 'red';
+        cells[r][c].textContent = '🍎';
     }
 
 }
