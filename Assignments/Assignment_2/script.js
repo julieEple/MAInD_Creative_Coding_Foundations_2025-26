@@ -73,13 +73,26 @@ function showSnake(){
             }
         }
       }
-
-      // Draw the apples aswell use emoji later🍎
+      
+      // Draw the apples aswell use emoji later🍎🪰🍄🌎🍟🦌
     for (let i = 0; i < apples.length; i++) {
         let apple = apples[i];
         let r = apple.rc;
         let c = apple.cc;
-        cells[r][c].textContent = '🍎';
+        if(headAvatar == "🐸"){
+            cells[r][c].textContent = '🪰';
+        }
+        else if(headAvatar == "🦄"){
+            cells[r][c].textContent = '🍄';
+        }
+        else if(headAvatar == "👽"){
+            cells[r][c].textContent = '🌎';
+        }
+        else if(headAvatar == "🧞‍♂️"){
+            cells[r][c].textContent = '🍟';
+        }
+        else{ cells[r][c].textContent = '🦌';} 
+
     }
 
 }
