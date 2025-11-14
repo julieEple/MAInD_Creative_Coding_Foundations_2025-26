@@ -7,6 +7,8 @@ let apples = [];
 let dir = "up";
 const amountOfApples=3;
 let paused = false; //ability to pause so that they can choose the character and apple/target 
+const avatars = document.querySelectorAll(".avatar");
+let headAvatar = "🐸";
 
 
 
@@ -35,7 +37,7 @@ function makeGrid(){
 function showSnake(){
     for(let r = 0; r<grid_size; r++){
         for(let c=0; c<grid_size; c++){
-            // cells[r][c].style.background=''; //empty cell, so that 
+             cells[r][c].style.background=''; //empty cell, so that 
             cells[r][c].textContent=''; //empty cell, so that 
 
         }
@@ -46,12 +48,29 @@ function showSnake(){
         let c = snakepart.cc; 
     
         if (i === 0) {
-        // cells[r][c].style.background = 'darkgreen'; // head
-        cells[r][c].textContent='👹';
+        cells[r][c].textContent=headAvatar;
+        cells[r][c].style.background = 'lightyellow'; // head
         } else {
-        //   cells[r][c].style.background = 'limegreen'; // body
-        cells[r][c].textContent='🟥';
-
+            if(headAvatar=="🐸"){
+                cells[r][c].style.background = 'limegreen'; // body, i want the body color to match the delected avatar
+                cells[r][c].textContent='';
+            }
+            else if(headAvatar=="🦄"){
+                cells[r][c].style.background = 'purple'; // body, i want the body color to match the delected avatar
+                cells[r][c].textContent='';
+            }
+            else if(headAvatar=="👽"){
+                cells[r][c].style.background = 'lightgrey'; // body, i want the body color to match the delected avatar
+                cells[r][c].textContent='';
+            }
+            else if(headAvatar=="🧞‍♂️"){
+                cells[r][c].style.background = 'lightblue'; // body, i want the body color to match the delected avatar
+                cells[r][c].textContent='';
+            }
+            else{
+                cells[r][c].style.background = 'red'; // body, i want the body color to match the delected avatar
+                cells[r][c].textContent='';
+            }
         }
       }
 
@@ -192,4 +211,11 @@ document.addEventListener('DOMContentLoaded', () => {
             pauseButtonText.textContent = "Pause";
         }
     });
+    //eventlistener for avatar selection
+    document.querySelectorAll(".ava").forEach(avatarDiv => {
+        avatarDiv.addEventListener("click", () => {
+            headAvatar = avatarDiv.dataset.avatar;
+        });
+    });
+    
 });

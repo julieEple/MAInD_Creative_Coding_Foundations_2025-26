@@ -22,8 +22,33 @@
     box-sizing: border-box;
   }
   
-  /* direction buttons */
+  /* avatars */
+  #avatars {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
 
+.ava {
+    font-size: 32px;
+    padding: 10px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.ava:hover {
+    transform: scale(1.2);
+}
+
+.ava.selected {
+    border-color: gold;
+    background: #ffeaa7;
+    border-radius: 6px;
+}
+
+
+  /* direction buttons */
 
   .button-layout {
     display: flex;
