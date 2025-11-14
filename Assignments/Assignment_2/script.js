@@ -6,6 +6,8 @@ const cells = []; //2D array of rows with columns
 let apples = [];
 let dir = "up";
 const amountOfApples=3;
+let paused = false; //ability to pause so that they can choose the character and apple/target 
+
 
 
 let snake = [
@@ -78,6 +80,8 @@ function makeApple(){
 }
 
 function move() {
+    if (paused) return; //wouldnt want to move if we are paused ;) 
+
     let head = snake[0];
     let newHead = { rc: head.rc, cc: head.cc };
   
@@ -158,5 +162,29 @@ document.addEventListener('DOMContentLoaded', () => {
       if (event.key === "ArrowLeft") dir = "left";
       if (event.key === "ArrowRight") dir = "right";
     });
-    
+//eventlistener for space button which pauses game
+
+    let pauseButtonText = document.getElementById("pause")
+
+    document.addEventListener("keydown", (e) => {
+        if (e.code === "Space") {
+          paused = !paused; // toggle between true/false aka play/pause
+          console.log(paused ? "PAUSED" : "UNPAUSED");
+          if (paused) {
+            pauseButtonText.textContent = "Resume";
+        } else {
+            pauseButtonText.textContent = "Pause";
+        }
+        }
+      });
+
+      pauseButtonText.addEventListener("click", () => {
+        paused = !paused;
+        console.log(paused ? "PAUSED" : "UNPAUSED");
+        if (paused) {
+            pauseButtonText.textContent = "Resume";
+        } else {
+            pauseButtonText.textContent = "Pause";
+        }
+    });
 });
