@@ -87,8 +87,7 @@ function move() {
     if (dir === "left") newHead.cc--;
 
     //check if head is moving outside of grid
-
-    if (
+    if ( //if the newHead row is bigger than zero aswell as bigger than the grid size (if not it can go out through the top and through the side hehe)
         newHead.rc < 0 || newHead.rc >= grid_size || newHead.cc < 0 || newHead.cc >= grid_size) {
         restartGame();
         return; 
