@@ -163,7 +163,6 @@ function move() {
         console.log("den krsæjet")
         restartGame();
     }    
-    
     showSnake();
   }
   

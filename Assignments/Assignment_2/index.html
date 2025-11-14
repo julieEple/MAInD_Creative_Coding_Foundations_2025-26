@@ -10,31 +10,31 @@
   </head>
   <body>
     
-    <div id= "container">
-        <h1>Zzznake</h1>
-        <div id="avatars">
-            <div class="ava" data-avatar="👽">👽</div> <!-- data-avatar is apparently better and good pravtise html -->
-            <div class="ava" data-avatar="🦄">🦄</div>
-            <div class="ava" data-avatar="🎅🏼">🎅🏼</div>
-            <div class="ava" data-avatar="🧞‍♂️">🧞‍♂️</div>
-            <div class="ava" data-avatar="🐸">🐸</div>
+    <p>Score: <span id="score">0</span></p>
+
+    <div id="grid_n_panel">
+    <div id="grid"></div>
+    <div id="avatars">
+        <div class="ava" data-avatar="👽">👽</div> <!-- data-avatar is apparently better and good pravtise html -->
+        <div class="ava" data-avatar="🦄">🦄</div>
+        <div class="ava" data-avatar="🎅🏼">🎅🏼</div>
+        <div class="ava" data-avatar="🧞‍♂️">🧞‍♂️</div>
+        <div class="ava" data-avatar="🐸">🐸</div>
         </div>
+    </div>
 
-        <p>Score: <span id="score">0</span></p>
-    
-        <div id="grid"></div>
+    <div id="panel">
+    <button id="pause">Pause</button>
 
-        <button id="pause">Pause</button>
-
-        <div id="directions">
-            <div class="button-layout">
-                    <button id="up">↑</button>
-                    <div class="middle-row">
-                        <button id="left">←</button>
-                        <div class="blank"></div>
-                        <button id="right">→</button>
-                    </div>
-                    <button id="down">↓</button>
+    <div id="directions">
+        <div class="button-layout">
+                <button id="up">↑</button>
+                <div class="middle-row">
+                    <button id="left">←</button>
+                    <div class="blank"></div>
+                    <button id="right">→</button>
+                </div>
+                <button id="down">↓</button>
             </div>
         </div>
     </div>
