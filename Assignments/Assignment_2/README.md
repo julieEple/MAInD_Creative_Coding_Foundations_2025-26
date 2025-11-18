@@ -50,7 +50,7 @@ The first functions to be called are makeGrid(), makeApple() and showSnake(). Th
 Loops through the 2D-array to create a cell-element for every element of the grid, which is 144 as the grid-size is always 12. Although it does not return anything, we are left with a grid of cell-elements after this function is called. 
 
 # function makeApple() 
-simple function to fill the apple-array and scatter the apples around the grid. Start by while-looping through the set amount of apples and creating variables to store random coordinates where the apples can be places. In other words we are generating random row and column-coordinates for the cell-elements. I added a small if check to make sure the apples are not generated in the same coordinates as the head-snake-element.
+simple function to fill the apple-array and scatter the apples around the grid. Start by while-looping through the set amount of apples and creating variables to store random coordinates where the apples can be places. In other words we are generating random row and column-coordinates for the cell-elements. I added a small if check to make sure the apples are not generated in the same coordinates as the head-snake-element, by using a boolean which is switched if the coordinates match. 
 
 # function showSnake() 
 starts by looping through all the elements and filling them with `` emptyness. The default of the grid-cells is naturally to be empty. 
