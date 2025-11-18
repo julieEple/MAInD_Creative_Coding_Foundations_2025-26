@@ -9,6 +9,9 @@ const amountOfApples=3;
 let paused = false; //ability to pause so that they can choose the character and apple/target 
 const avatars = document.querySelectorAll(".avatar");
 let headAvatar = "🐸";
+let score =0;
+const scoreDisplay = document.getElementById("score");
+
 
 
 
@@ -171,9 +174,14 @@ function restartGame(){
     location.reload();
 }
 
+function updateScore() {
+    scoreDisplay.textContent = score;
+}
+
 function eatApple(apple){
         apples.splice(apple, 1);
         score++;
+        updateScore();
 
         makeApple();
         
