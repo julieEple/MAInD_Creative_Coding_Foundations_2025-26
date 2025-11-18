@@ -129,17 +129,13 @@ function move() {
     if (dir === "down") newHead.rc++;
     if (dir === "right") newHead.cc++;
     if (dir === "left") newHead.cc--;
-
     //check if head is moving outside of grid
     if ( //if the newHead row is bigger than zero aswell as bigger than the grid size (if not it can go out through the top and through the side hehe)
         newHead.rc < 0 || newHead.rc >= grid_size || newHead.cc < 0 || newHead.cc >= grid_size) {
         restartGame();
         return; 
       }
-
-  
     snake.unshift(newHead); // new head to animate movement 
-
     // check if snake collides with apple = no tail removed 
     let ate = false; 
     for (let i = 0; i < apples.length; i++) {
@@ -172,6 +168,7 @@ function move() {
 
 function restartGame(){
     location.reload();
+
 }
 
 function updateScore() {
@@ -182,6 +179,9 @@ function eatApple(apple){
         apples.splice(apple, 1);
         score++;
         updateScore();
+        const eatSound = document.getElementById("eatSound");
+        eatSound.currentTime = 0; 
+        eatSound.play();
 
         makeApple();
         
