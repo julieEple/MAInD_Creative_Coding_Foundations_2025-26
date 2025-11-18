@@ -233,7 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       pauseButtonText.addEventListener("click", () => {
         paused = !paused;
-        console.log(paused ? "PAUSED" : "UNPAUSED");
         if (paused) {
             pauseButtonText.textContent = "Resume";
         } else {

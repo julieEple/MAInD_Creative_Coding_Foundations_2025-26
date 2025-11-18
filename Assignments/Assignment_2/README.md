@@ -50,7 +50,7 @@ The first functions to be called are makeGrid(), makeApple() and showSnake(). Th
 Loops through the 2D-array to create a cell-element for every element of the grid, which is 144 as the grid-size is always 12. Although it does not return anything, we are left with a grid of cell-elements after this function is called. 
 
 # function makeApple() 
-simple function to fill the apple-array and scatter the apples around the grid. Start by while-looping through the set amount of apples and creating variables to store random coordinates where the apples can be places. In other words we are generating random row and column-coordinates for the cell-elements. I added a small if check to make sure the apples are not generated in the same coordinates as the head-snake-element, by using a boolean which is switched if the coordinates match. The apple can only be added to the array if the boolean is false. 
+simple function to fill the apple-array and scatter the apples around the grid. Start by whilelooping and checking how many elements are in apple-array. If less than amountOfApples Variable it creates new apples. To create the apples it generates variables to store random coordinates where the apples can be placed. In other words we are generating random row and column-coordinates for the cell-elements. I added a small if check to make sure the apples are not generated in the same coordinates as the head-snake-element, by using a boolean which is switched if the coordinates match. The apple will only be added to the array if the boolean is false. 
 
 # function showSnake() 
 starts by looping through all the elements and filling them with `` emptyness. The default of the grid-cells is naturally to be empty. 
@@ -67,4 +67,26 @@ I made 4 buttons, dir-buttons, which represent the directions the snake can move
                             if (dir === "left") newHead.cc--;
 But it is unfortunately not that simple. The movement is restrained. The snake should not move out of the grid, and should not eat itself. To make the constraints I check whether the newHeads rows and column-values are greater than the grid size, or less than 0. If this is true then the restartGame() is called and the move functions quits/returns. 
 If false, aka the coordinates are inside the grid, the snake-array calls the unshift()  variable with the value of the newHead snake, which turns the new head into index 0 of the array. 
-Then we check if the newHead collides with the apples, by a simple if check of all the apple-elements compared to the new head. If the newHead does share the same coordinates as the 
+Then we check if the newHead collides with the apples, by a simple if check of all the apple-elements compared to the new head. If the newHead does share the same coordinates as one of the Apple-cells the eatApple()-funtion is called. I used a boolean variable ate to control the growth of the snake array. The snake should grow by one cell every time an apple is eaten, which I fixed by only reoving the tail-element if the snake does not eat an apple. If the snake does eat an apple the tail continues to be part of the snake, and if not the tail is pop()ed. Quite celever I must say. 
+Lastly we check if the snake eats itself by comparing every snake-cell to the head. If there is a match between snakeHead and snakebody the restartGame()-funtion is called, and the fucntion returns. 
+Lastly-lastly the showSnake() is called, as the snake-array has been updated. 
+
+# function restartGame()
+simply calls method reload() which restarts the page.  
+
+
+# function updateScore() 
+    uses global variable score which is updated in the eatApple()-funtion to update HTML-element score every time an apple is eaten. It is called in eatApple()-funtion. 
+
+# function eatApple()
+    does a few more things than just eating apples. First off all it takes the argument apple, and uses the index to splice() one element from the Apple-array. 
+    It updated the score variable by one count, then calls updateScore to send to html.  
+    Then it collects the html-audio element and plays the clip. So every time an apple is eaten the same sound plays. 
+    Then it updates the speed. 
+    Lastly it calls makeApple() as the apple array must be updated (should always be 3 apples in there.)
+
+# function gameLoop()
+    creates intervals for calling the move()-function. Is uses setTimeout which allows for incrementing the speed per call as it takes the global speed-variable as an argument. The speedvariable is incremented in the eatApple-funtion. 
+
+
+# Now the EventListeners
