@@ -5,8 +5,9 @@ const cells = []; //2D array of rows with columns
 // Access a cell by CELLS[row][col]
 
 let apples = [];
-let dir = "up";
 const amountOfApples=3;
+
+let dir = "up";
 let paused = false; //ability to pause so that they can choose the character and apple/target 
 const avatars = document.querySelectorAll(".avatar");
 let headAvatar = "🐸";
