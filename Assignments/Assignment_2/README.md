@@ -50,13 +50,18 @@ The first functions to be called are makeGrid(), makeApple() and showSnake(). Th
 Loops through the 2D-array to create a cell-element for every element of the grid, which is 144 as the grid-size is always 12. Although it does not return anything, we are left with a grid of cell-elements after this function is called. 
 
 # function makeApple() 
-simple function to fill the apple-array and scatter the apples around the grid. Start by while-looping through the set amount of apples and creating variables to store random coordinates where the apples can be places. In other words we are generating random row and column-coordinates for the cell-elements. I added a small if check to make sure the apples are not generated in the same coordinates as the head-snake-element, by using a boolean which is switched if the coordinates match. 
+simple function to fill the apple-array and scatter the apples around the grid. Start by while-looping through the set amount of apples and creating variables to store random coordinates where the apples can be places. In other words we are generating random row and column-coordinates for the cell-elements. I added a small if check to make sure the apples are not generated in the same coordinates as the head-snake-element, by using a boolean which is switched if the coordinates match. The apple can only be added to the array if the boolean is false. 
 
 # function showSnake() 
 starts by looping through all the elements and filling them with `` emptyness. The default of the grid-cells is naturally to be empty. 
 Then we loop through the snake-array, which by default is 3 elements of row and column-coordinates. For every "snakepart"/element we make temporary variables r and c to access the snake-elements coordinates. The variables are usedful to check and differentiate between the head-element and the rest of the body. 
 For every element we update the style/fill with background-color and an emoji. We have to check for which avatar is currently chosen as every avatar has different colors. 
 
-Then we draw in the apples in the same fashion. Again the different avatars have different apples  which require an if-else check. 
+Then we draw in the apples in the same fashion. We go though the array we made in makwApples, to access each element. Again the different avatars have different apples  which require an if-else check. 
 
-
+# function move() 
+Is a crutial function. It starts by checking if the global variable is true or false, and returns if true/paused. The snake is not supposed to move when the game is paused, of course. If not paused it continiues by accessing the head of the snake, which is the only element we need to worry about. It creates a "temporary" variable which will act as the new head after collecting the direction of the move. To begin with it is just a copy of the current head. 
+I made 4 buttons, dir-buttons, which represent the directions the snake can move in. My code if-checks which direction is active. This is possible through the global variable dir which is updated by an eventListener. Depending on the direction the newHead variable is updated, either if (dir === "up") newHead.rc--;
+                            if (dir === "down") newHead.rc++;
+                            if (dir === "right") newHead.cc++;
+                            if (dir === "left") newHead.cc--;
