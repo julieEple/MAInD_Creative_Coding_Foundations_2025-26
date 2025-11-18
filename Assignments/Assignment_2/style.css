@@ -27,11 +27,10 @@ h1{
   padding-top: 0rem;
   padding-left: 7rem;
   border-radius: 2rem;
+  border-style: dotted;
+  border-color: pink;
 }
-#top-panel{
-    display: flex;
-    flex-direction: row;
-}
+
   #grid_n_avatars{
     display: flex; 
     flex-direction: row;
@@ -48,6 +47,43 @@ h1{
     margin-left: auto;
     margin-right: auto;
     margin-top: 60px;  
+  }
+
+  #panel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: aqua;
+    margin-right: 5rem;
+}
+#panelbuttons{
+    display: flex;
+    flex-direction: column; /* WHy is this not placing them on top of each other?? */
+    align-items: center;
+    background-color: yellow;
+    flex-grow: 1;
+  }
+
+  #panelbuttons #pause{
+    display: flex;
+    aspect-ratio: 1;
+    background-color: green;
+    border-style: outset;
+    border-color: pink;
+    font-family: "Karmatic Arcade";
+  }
+
+  #panelbuttons p{
+    display: flex;
+    background-color: red;
+    font-family: "Karmatic Arcade";
+  }
+
+  #panelbuttons #score{
+    display: flex;
+    background-color: red;
+    font-family: "Karmatic Arcade";
   }
 
   .cell {
@@ -79,18 +115,7 @@ h1{
     transform: scale(1.2);
 }
 
-.ava.selected {
-    border-color: gold;
-    background: #ffeaa7;
-    border-radius: 6px;
-}
 
-#panel {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-}
   /* direction buttons */
 
   .button-layout {
@@ -104,7 +129,7 @@ h1{
   .button-layout button {
     width: 40px;
     height: 40px;
-    background: #efd808;
+    background: lightpink;
     border: 2px solid #888;
     border-radius: 8px;
     font-size: 20px;

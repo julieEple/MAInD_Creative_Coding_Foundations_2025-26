@@ -60,7 +60,7 @@ function showSnake(){
                 cells[r][c].textContent='';
             }
             else if(headAvatar=="👽"){
-                cells[r][c].style.background = 'lightgrey'; // body, i want the body color to match the delected avatar
+                cells[r][c].style.background = 'grey'; // body, i want the body color to match the delected avatar
                 cells[r][c].textContent='';
             }
             else if(headAvatar=="🧞‍♂️"){
