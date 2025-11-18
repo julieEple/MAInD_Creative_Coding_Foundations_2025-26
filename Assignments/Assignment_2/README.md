@@ -10,6 +10,9 @@ Choose a “mini-game” to rebuild with HTML, CSS and JavaScript. The requireme
 - Implement an “automatic restart” in the game (that is not done via the refresh of the page) ✅
 
 ### Screenshots:
-(assets/docu1.png)
-(assets/docu2.png)
+### 
+![Screen 1](assets/docu1.png)
+
+### 
+![Scren 2](assets/docu2.png)
 
