@@ -16,19 +16,20 @@ h1{
   font-family: "Karmatic Arcade";
   font-weight: normal;
   font-style: normal;
-  color: lightpink;
+  color: #ec0868;
   font-size: 5rem;
 
 }
 
 #container{
+  background-image: url(assets/arcade.jpg);
   background-color: lightgray;
   padding: 2rem;
   padding-top: 0rem;
   padding-left: 7rem;
   border-radius: 2rem;
   border-style: dotted;
-  border-color: pink;
+  border-color: #ec0868;
 }
 
   #grid_n_avatars{
@@ -47,6 +48,8 @@ h1{
     margin-left: auto;
     margin-right: auto;
     margin-top: 60px;  
+    border-style: dotted;
+    border-color: #ec0868;;
   }
 
   #panel{
@@ -54,7 +57,7 @@ h1{
     flex-direction: row;
     align-items: stretch;
     justify-content: space-between;      
-    background-color: aqua;
+    /* background-color: aqua; */
     margin-right: 5rem;
     gap: 1rem;
 }
@@ -68,7 +71,7 @@ h1{
   #panelbuttons #pause{
     flex: 1;
     /* max-height: 50%; */
-    background-color: green;
+    /* background-color: green; */
     border-style: outset;
     border-color: pink;
     font-family: "Karmatic Arcade";
@@ -80,13 +83,13 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    /* background-color: red; */
     font-family: "Karmatic Arcade";
   }
 
   #panelbuttons #score{
     display: flex;
-    background-color: red;
+    /* background-color: red; */
     font-family: "Karmatic Arcade";
   }
 
@@ -96,7 +99,7 @@ h1{
     align-items: center;
     width: 30px;
     height: 30px;
-    border: 1px solid #2f2323;
+    /* border: 1px solid lightgrey; */
     box-sizing: border-box;
   }
   
