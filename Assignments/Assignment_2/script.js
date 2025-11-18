@@ -1,4 +1,5 @@
 const grid = document.getElementById('grid');
+
 const grid_size = 12; //maybe let user choose level which will be defined by gridsize (harder with 40x40 fex)
 const cells = []; //2D array of rows with columns
 // Access a cell by CELLS[row][col]
@@ -13,10 +14,8 @@ let score =0;
 const scoreDisplay = document.getElementById("score");
 
 
-
-
-let snake = [
-    {cc: 5, rc: 5}, // head -- column coordinate and row coordinate
+let snake = [ //starting snake can´t be
+    {cc: 5, rc: 5}, 
     {cc: 5, rc: 6},
     {cc: 5, rc: 7}  // tail
     ]; 
