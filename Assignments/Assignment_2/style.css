@@ -23,7 +23,6 @@ h1{
 
 #container{
   background-image: url(assets/arcade.jpg);
-  background-color: lightgray;
   padding: 2rem;
   padding-top: 0rem;
   padding-left: 7rem;
@@ -70,21 +69,20 @@ h1{
 
   #panelbuttons #pause{
     flex: 1;
-    /* max-height: 50%; */
-    /* background-color: green; */
     border-style: outset;
-    border-color: pink;
+    border-color: #ec0868;
+    border-radius: 5rem;
     font-family: "Karmatic Arcade";
+    color: #ec0868;;
   }
-
 
   #panelbuttons p{
     flex: 1;              
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: red; */
     font-family: "Karmatic Arcade";
+    color: #ec0868;;
   }
 
   #panelbuttons #score{
@@ -121,8 +119,6 @@ h1{
 .ava:hover {
     transform: scale(1.2);
 }
-
-
   /* direction buttons */
 
   .button-layout {
@@ -136,8 +132,7 @@ h1{
   .button-layout button {
     width: 40px;
     height: 40px;
-    background: lightpink;
-    border: 2px solid #888;
+    background: #ec0868;
     border-radius: 8px;
     font-size: 20px;
     margin: 2px;
