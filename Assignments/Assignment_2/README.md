@@ -65,3 +65,6 @@ I made 4 buttons, dir-buttons, which represent the directions the snake can move
                             if (dir === "down") newHead.rc++;
                             if (dir === "right") newHead.cc++;
                             if (dir === "left") newHead.cc--;
+But it is unfortunately not that simple. The movement is restrained. The snake should not move out of the grid, and should not eat itself. To make the constraints I check whether the newHeads rows and column-values are greater than the grid size, or less than 0. If this is true then the restartGame() is called and the move functions quits/returns. 
+If false, aka the coordinates are inside the grid, the snake-array calls the unshift()  variable with the value of the newHead snake, which turns the new head into index 0 of the array. 
+Then we check if the newHead collides with the apples, by a simple if check of all the apple-elements compared to the new head. If the newHead does share the same coordinates as the 
