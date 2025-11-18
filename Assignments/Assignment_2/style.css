@@ -5,8 +5,8 @@
 }
 
 body{
-    padding-top: 20px;
     margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,15 +17,16 @@ h1{
   font-weight: normal;
   font-style: normal;
   color: #ec0868;
-  font-size: 5rem;
-  margin-bottom: 10px;
-
+  font-size: 4rem;
+  margin-bottom: 0;
+  padding: 0; 
+  text-align: center;
+  line-height: 1; 
 }
 
 #container{
   background-image: url(assets/arcade.jpg);
-  padding: 2rem;
-  padding-top: 0rem;
+  padding: 0 2rem 2rem 2rem; /* top 0, right 2rem, bottom 2rem, left 2rem */
   border-radius: 2rem;
   border-style: dotted;
   border-color: #ec0868;
@@ -34,7 +35,7 @@ h1{
   #grid_n_avatars{
     display: flex; 
     flex-direction: column;
-    gap: 10px;
+    gap: 2px;
     align-items: center; 
   }
 
@@ -44,7 +45,7 @@ h1{
     grid-template-columns: repeat(12, 30px);
     grid-template-rows: repeat(12, 30px);
     gap: 0;
-    margin: 20px;
+    margin: 2px;
     margin-left: auto;
     margin-right: auto;
     border-style: dotted;
@@ -67,7 +68,7 @@ h1{
     align-items: stretch;
     justify-content: space-between;      
     /* background-color: aqua; */
-    margin-right: 5rem;
+    /* margin-right: 5rem; */
     gap: 1rem;
 }
 
@@ -111,13 +112,15 @@ h1{
     flex-direction: row;
     justify-content: center;
     width: fit-content; 
-    gap: 10px;
+    gap: 2px;
+    padding: 0;     
+    margin: 0;
 }
 
 .ava {
     font-size: 32px;
     padding: 10px;
-    border: 2px solid transparent;
+    /* border: 2px solid transparent; */
     cursor: pointer;
     transition: 0.2s;
 }
@@ -155,3 +158,32 @@ h1{
   }
   
 
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    #grid {
+      
+      grid-template-columns: repeat(12, 40px);
+      grid-template-rows: repeat(12, 40px);
+    }
+    .cell {
+        width: 40px;
+        height:40px;
+    }
+    .ava {
+        font-size: 30px;
+    }
+}
+
+
+@media screen and (min-width: 1023px) {
+  #grid {
+    grid-template-columns: repeat(12,50px);
+    grid-template-rows: repeat(12, 50px);
+  }
+  .cell {
+      width: 50px;
+      height:50px;
+  }
+  .ava {
+      font-size: 30px;
+  }
+}

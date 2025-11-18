@@ -13,6 +13,9 @@ let headAvatar = "🐸";
 let score =0;
 const scoreDisplay = document.getElementById("score");
 
+let speed = 500; // beginning speed
+let speedIncrement = 10; // to reduce the interval == make speed up
+let minSpeed = 100; //not make it tooooo hard
 
 let snake = [ //starting snake can´t be
     {cc: 5, rc: 5}, 
@@ -182,15 +185,21 @@ function eatApple(apple){
         eatSound.currentTime = 0; 
         eatSound.play();
 
+        speed = Math.max(minSpeed, speed - speedIncrement);
         makeApple();
-        
+}
+
+function gameLoop() {
+    if (!paused) move(); 
+    setTimeout(gameLoop, speed);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     makeGrid();     // create the grid first
     makeApple(); //fill the apple list with cells/apples
     showSnake();    // then draw the snake
-    setInterval(move, 500);
+    // setInterval(move, 500);
+    gameLoop();
 
 //make button panel so I can change directons
     document.getElementById("up").addEventListener("click", () => dir = "up");
