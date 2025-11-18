@@ -1,36 +1,45 @@
 
- 
+@font-face {
+  font-family: "Karmatic Arcade";
+  src: URL(assets/ka1.ttf) format('truetype');
+}
+
 body{
     padding-top: 50px;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('assets/computer2.jpg');  /* sett path til bildet ditt */
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: top center;
-
   }
 
+h1{
+  font-family: "Karmatic Arcade";
+  font-weight: normal;
+  font-style: normal;
+  color: lightpink;
+  font-size: 5rem;
 
+}
 
-  h1{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #432818;
-    font-size: 3rem;
-  }
+#container{
+  background-color: lightgray;
+  padding: 2rem;
+  padding-top: 0rem;
+  padding-left: 7rem;
+  border-radius: 2rem;
+}
 #top-panel{
     display: flex;
     flex-direction: row;
 }
-  #grid_n_panel{
-    display: flex;
+  #grid_n_avatars{
+    display: flex; 
     flex-direction: row;
     gap: 20px;
   }
 
   #grid {
+    align-self: center;
     display: grid;
     grid-template-columns: repeat(12, 30px);
     grid-template-rows: repeat(12, 30px);
