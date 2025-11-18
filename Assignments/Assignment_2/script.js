@@ -19,7 +19,7 @@ let snake = [
     {cc: 5, rc: 5}, // head -- column coordinate and row coordinate
     {cc: 5, rc: 6},
     {cc: 5, rc: 7}  // tail
-    ];
+    ]; 
 
 
 //creating grid 
