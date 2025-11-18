@@ -55,11 +55,11 @@ function showSnake(){
         cells[r][c].style.background = 'lightyellow'; // head
         } else {
             if(headAvatar=="🐸"){
-                cells[r][c].style.background = 'limegreen'; // body, i want the body color to match the delected avatar
+                cells[r][c].style.background = "#89fc00"; // body, i want the body color to match the delected avatar
                 cells[r][c].textContent='';
             }
             else if(headAvatar=="🦄"){
-                cells[r][c].style.background = 'purple'; // body, i want the body color to match the delected avatar
+                cells[r][c].style.background = '#e500a4'; // body, i want the body color to match the delected avatar
                 cells[r][c].textContent='';
             }
             else if(headAvatar=="👽"){
@@ -67,11 +67,11 @@ function showSnake(){
                 cells[r][c].textContent='';
             }
             else if(headAvatar=="🧞‍♂️"){
-                cells[r][c].style.background = 'lightblue'; // body, i want the body color to match the delected avatar
+                cells[r][c].style.background = '#0aefff'; // body, i want the body color to match the delected avatar
                 cells[r][c].textContent='';
             }
             else{
-                cells[r][c].style.background = 'red'; // body, i want the body color to match the delected avatar
+                cells[r][c].style.background = '#fc2f00'; // body, i want the body color to match the delected avatar
                 cells[r][c].textContent='';
             }
         }
