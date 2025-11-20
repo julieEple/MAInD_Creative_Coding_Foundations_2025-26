@@ -1,7 +1,7 @@
 
 @font-face {
   font-family: "Karmatic Arcade";
-  src: URL(assets/ka1.ttf) format('truetype');
+  src: URL(./media/ka1.ttf) format('truetype');
 }
 
 body{
@@ -17,7 +17,7 @@ h1{
   font-weight: normal;
   font-style: normal;
   color: #ec0868;
-  font-size: 4rem;
+  font-size: 3.8rem;
   margin-bottom: 0;
   padding: 0; 
   text-align: center;
@@ -25,7 +25,7 @@ h1{
 }
 
 #container{
-  background-image: url(assets/arcade.jpg);
+  background-image: url(./media/arcade.jpg);
   padding: 0 2rem 2rem 2rem; /* top 0, right 2rem, bottom 2rem, left 2rem */
   border-radius: 2rem;
   border-style: dotted;
