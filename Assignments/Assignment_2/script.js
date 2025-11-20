@@ -43,7 +43,7 @@ function makeGrid(){
 function showSnake(){
     for(let r = 0; r<grid_size; r++){
         for(let c=0; c<grid_size; c++){
-             cells[r][c].style.background=''; //empty cell, so that 
+            cells[r][c].style.background=''; //empty cell, so that 
             cells[r][c].textContent=''; //empty cell, so that 
 
         }
