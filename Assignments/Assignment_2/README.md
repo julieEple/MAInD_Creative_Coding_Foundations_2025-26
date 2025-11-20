@@ -77,18 +77,18 @@ simply calls method reload() which restarts the page.
 
 
 ## function updateScore() 
-    uses global variable score which is updated in the eatApple()-funtion to update HTML-element score every time an apple is eaten. It is called in eatApple()-funtion. 
+uses global variable score which is updated in the eatApple()-funtion to update HTML-element score every time an apple is eaten. It is called in eatApple()-funtion. 
 
 ## function eatApple()
-    does a few more things than just eating apples. First off all it takes the argument apple, and uses the index to splice() one element from the Apple-array. 
-    It updated the score variable by one count, then calls updateScore to send to html.  
-    Then it collects the html-audio element and plays the clip. So every time an apple is eaten the same sound plays. 
-    Then it updates the speed. 
-    Lastly it calls makeApple() as the apple array must be updated (should always be 3 apples in there.)
+does a few more things than just eating apples. First off all it takes the argument apple, and uses the index to splice() one element from the Apple-array. 
+It updated the score variable by one count, then calls updateScore to send to html.  
+Then it collects the html-audio element and plays the clip. So every time an apple is eaten the same sound plays. 
+Then it updates the speed. 
+Lastly it calls makeApple() as the apple array must be updated (should always be 3 apples in there.)
 
 
 ## function gameLoop()
-    Is responsible for the speed of the snake. It creates intervals for calling the move()-function. Is uses setTimeout which allows for incrementing the speed per call as it takes the global speed-variable as an argument. The speedvariable is incremented in the eatApple-funtion. It collects the global speed variable which is updated using the increment-variable every time an apple is eaten in the eatApple()-function. By getting the updated speed it can call the setTimeout()-method with the new speed as the interval. It calls itself to check pause-boolean, and is called for the first time to start it in the DOM-Content-eventListener-scope. 
+Is responsible for the speed of the snake. It creates intervals for calling the move()-function. Is uses setTimeout which allows for incrementing the speed per call as it takes the global speed-variable as an argument. The speedvariable is incremented in the eatApple-funtion. It collects the global speed variable which is updated using the increment-variable every time an apple is eaten in the eatApple()-function. By getting the updated speed it can call the setTimeout()-method with the new speed as the interval. It calls itself to check pause-boolean, and is called for the first time to start it in the DOM-Content-eventListener-scope. 
 
 ## function resetValues()
     Simply resets all the variables so that the game can be restart without using .reload()
@@ -107,5 +107,5 @@ There are quite a few:)) I start by making sure all the DOM-content is loaded. W
 The rest of the listeners take care of the buttons, by listening and updating global variables when clicked. For the direction-buttons the dir-variable is updated which is responsible for the direction the snake moves. The pause/resume variable is updated and toggled between resume and pause by updating the varibales value between true and false. Both listenes for button-clicks and for keyboard button use. The pause/resume listenes to the space-key, and directions are naturally the arrowns on the keyboard. 
 
 ## Content and data sources 
-https://uppbeat.io/
+bite sound: https://uppbeat.io/
 https://jwt-f.uppbeat.io/audio-files/b7c9c31af312304d2baa0b6434e93928/f5e1f58525487d4427537e6e2779cfdb/1d2a65eb4c7959d0d279a34602780501/apple-bite-joshua-chivers-1-00-00.mp3?auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiaWQiOiIzOTI0ODM0IiwiczMiOiJodHRwczovL2Nkbi51cHBiZWF0LmlvLyIsImFzc2V0IjoiYXVkaW8tZmlsZXMvYjdjOWMzMWFmMzEyMzA0ZDJiYWEwYjY0MzRlOTM5MjgvZjVlMWY1ODUyNTQ4N2Q0NDI3NTM3ZTZlMjc3OWNmZGIvMWQyYTY1ZWI0Yzc5NTlkMGQyNzlhMzQ2MDI3ODA1MDEvYXBwbGUtYml0ZS1qb3NodWEtY2hpdmVycy0xLTAwLTAwLm1wMyIsIm5iZiI6MTc2MzQ4OTY2OCwiZXhwIjoxNzYzNDg5NzI4LCJpYXQiOjE3NjM0ODk2NjgsImlzcyI6IlVwcGJlYXQtQXV0aGVudGljYXRpb24tQXBpIiwiYXVkIjoiVXBwYmVhdCJ9.nyziKc7o124Gtcv-U0obB-oCYbHSeYvyDAVpkwyME5w
