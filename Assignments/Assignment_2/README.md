@@ -11,10 +11,10 @@ Choose a “mini-game” to rebuild with HTML, CSS and JavaScript. The requireme
 
 ### Screenshots:
 ### 
-![Screen 1](assets/docu1.png)
+![Screen 1](./media/docu1.png)
 
 ### 
-![Scren 2](assets/docu2.png)
+![Scren 2](./media/docu2.png)
 
 ### Snake description:
 I chose snake, which I am sure we are all very familiar with. My game has the original simple logic where a snake chases an apple. However, which some creative liberties I made it a little bit more interesting and unique. You can choose your avatar, and which the avatar the "apple" also changes. With every time the snake (or genie, santa, frog etc) its the apple the snake grows and the speed increases, aswell as an mp3 audio file being played. You can change the direction of the snake-movement with your keyboard or the direction buttons. You can also pause and resume the game whenever. 
