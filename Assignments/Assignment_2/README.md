@@ -89,4 +89,8 @@ simply calls method reload() which restarts the page.
     creates intervals for calling the move()-function. Is uses setTimeout which allows for incrementing the speed per call as it takes the global speed-variable as an argument. The speedvariable is incremented in the eatApple-funtion. 
 
 
+# function gameLoop()
+    Is responsible for the speed of the snake. It collects the global speed variable which is updated using the increment-variable every time an apple is eaten in the eatApple()-function. By getting the updated speed it can call the setTimeout()-method with the new speed as the interval. It calls itself to check pause-boolean, and is called for the first time to start it in the startGame()-funtion. 
+
 # Now the EventListeners
+There are quite a few:)) I start by making sure all the DOM-content is loaded. When all the content is loaded I call 3 functions - makeGrid(), makeApple() and showSnake(). 

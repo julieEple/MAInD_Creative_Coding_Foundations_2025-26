@@ -135,8 +135,8 @@ function move() {
     //check if head is moving outside of grid
     if ( //if the newHead row is bigger than zero aswell as bigger than the grid size (if not it can go out through the top and through the side hehe)
         newHead.rc < 0 || newHead.rc >= grid_size || newHead.cc < 0 || newHead.cc >= grid_size) {
-        restartGame();
-        return; 
+            startGame();
+            return; 
       }
     snake.unshift(newHead); // new head to animate movement 
     // check if snake collides with apple = no tail removed 
@@ -163,14 +163,15 @@ function move() {
       }
     if(crash == true){
         console.log("den krsæjet")
-        restartGame();
+        startGame();
     }    
     showSnake();
   }
   
 
 function restartGame(){
-    location.reload();
+    // location.reload();
+    startGame();
 
 }
 
@@ -195,12 +196,35 @@ function gameLoop() {
     setTimeout(gameLoop, speed);
 }
 
+//need to make changes so that game can be restart without .reload()
+function resetValues() {
+    apples = [];
+    snake = [
+        {cc: 5, rc: 5},
+        {cc: 5, rc: 6},
+        {cc: 5, rc: 7}
+    ];
+    dir = "up";
+    paused = false;
+    score = 0;
+    speed = 500;
+    updateScore();
+}
+
+function resetGrid() {
+    grid.innerHTML = "";
+    cells.length = 0;
+}
+
+function startGame() {
+    resetValues();
+    resetGrid();
+    makeGrid();
+    makeApple();
+    showSnake();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    makeGrid();     // create the grid first
-    makeApple(); //fill the apple list with cells/apples
-    showSnake();    // then draw the snake
-    // setInterval(move, 500);
-    gameLoop();
 
 //make button panel so I can change directons
     document.getElementById("up").addEventListener("click", () => dir = "up");
@@ -222,7 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener("keydown", (e) => {
         if (e.code === "Space") {
           paused = !paused; // toggle between true/false aka play/pause
-          console.log(paused ? "PAUSED" : "UNPAUSED");
           if (paused) {
             pauseButtonText.textContent = "Resume";
         } else {
@@ -246,4 +269,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    makeGrid();
+    startGame();
+    gameLoop();
 });
+
