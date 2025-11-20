@@ -85,12 +85,23 @@ simply calls method reload() which restarts the page.
     Then it updates the speed. 
     Lastly it calls makeApple() as the apple array must be updated (should always be 3 apples in there.)
 
-# function gameLoop()
-    creates intervals for calling the move()-function. Is uses setTimeout which allows for incrementing the speed per call as it takes the global speed-variable as an argument. The speedvariable is incremented in the eatApple-funtion. 
-
 
 # function gameLoop()
-    Is responsible for the speed of the snake. It collects the global speed variable which is updated using the increment-variable every time an apple is eaten in the eatApple()-function. By getting the updated speed it can call the setTimeout()-method with the new speed as the interval. It calls itself to check pause-boolean, and is called for the first time to start it in the startGame()-funtion. 
+    Is responsible for the speed of the snake. It creates intervals for calling the move()-function. Is uses setTimeout which allows for incrementing the speed per call as it takes the global speed-variable as an argument. The speedvariable is incremented in the eatApple-funtion. It collects the global speed variable which is updated using the increment-variable every time an apple is eaten in the eatApple()-function. By getting the updated speed it can call the setTimeout()-method with the new speed as the interval. It calls itself to check pause-boolean, and is called for the first time to start it in the DOM-Content-eventListener-scope. 
+
+# function resetValues()
+    Simply resets all the variables so that the game can be restart without using .reload()
+
+# function resetGrid()
+    Makes all the cell-elements go back to "empty"/unfilled, and removes them from the grid so that they can be filled when the game is restart in the way it is supposed to with the makeGrid()-funtion. 
+
+# function startGame()
+    Simply calls functions needed to start game. It start with calling the reset-functions, and then remakes the grid, snake and apples. 
+
+
 
 # Now the EventListeners
-There are quite a few:)) I start by making sure all the DOM-content is loaded. When all the content is loaded I call 3 functions - makeGrid(), makeApple() and showSnake(). 
+There are quite a few:)) I start by making sure all the DOM-content is loaded. When the content is loaded we can call the startGame()-funtion aswell as the fist calling of the gameLoop, and the makeGrid(). 
+
+The rest of the listeners take care of the buttons, by listening and updating global variables when clicked. For the direction-buttons the dir-variable is updated which is responsible for the direction the snake moves. The pause/resume variable is updated and toggled between resume and pause by updating the varibales value between true and false. Both listenes for button-clicks and for keyboard button use. The pause/resume listenes to the space-key, and directions are naturally the arrowns on the keyboard. 
+

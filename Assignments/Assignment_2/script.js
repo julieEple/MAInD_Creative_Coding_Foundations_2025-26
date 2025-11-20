@@ -225,6 +225,10 @@ function startGame() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    makeGrid();
+    startGame();
+    gameLoop();
+});
 
 //make button panel so I can change directons
     document.getElementById("up").addEventListener("click", () => dir = "up");
@@ -269,8 +273,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    makeGrid();
-    startGame();
-    gameLoop();
-});
+
 
