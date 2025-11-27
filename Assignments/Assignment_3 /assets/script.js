@@ -269,7 +269,7 @@ function startGame() {
   resetValues();
   resetGrid();
   makeGrid();
-  makeAvatars();
+//   makeAvatars();
   makeApple();
   showSnake();
 }

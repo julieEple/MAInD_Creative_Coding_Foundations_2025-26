@@ -12,7 +12,7 @@ body{
     align-items: center;
   }
 
-h1{
+/* h1{
   font-family: "Karmatic Arcade";
   font-weight: normal;
   font-style: normal;
@@ -22,14 +22,21 @@ h1{
   padding: 0; 
   text-align: center;
   line-height: 1; 
+} */
+
+#pokeImg{
+  width: 500px;
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
 
 #container{
-  background-image: url(./media/arcade.jpg);
+  background-image: url(./media/poke2.jpg);
   padding: 0 2rem 2rem 2rem; /* top 0, right 2rem, bottom 2rem, left 2rem */
   border-radius: 2rem;
   border-style: dotted;
-  border-color: #ec0868;
+  border-color: #fcca46;
 }
 
   #grid_n_avatars{
@@ -49,7 +56,7 @@ h1{
     margin-left: auto;
     margin-right: auto;
     border-style: dotted;
-    border-color: #ec0868;;
+    border-color: #fcca46;
   }
 
   .cell {
@@ -81,11 +88,11 @@ h1{
   #panelbuttons #pause{
     flex: 1;
     border-style: outset;
-    border-color: #ec0868;
+    border-color: #fcca46;
     border-radius: 5rem;
     font-family: "Karmatic Arcade";
-    color: #ec0868;
-    background-color: #00e9ff;
+    color: #fcca46;
+    background-color: #5084c4;
     font-size: 1.2rem;
   }
 
@@ -95,7 +102,7 @@ h1{
     justify-content: center;
     align-items: center;
     font-family: "Karmatic Arcade";
-    color: #ec0868;;
+    color: #fcca46;
   }
 
   #panelbuttons #score{
@@ -141,7 +148,7 @@ h1{
   .button-layout button {
     width: 40px;
     height: 40px;
-    background: #ec0868;
+    background: #fcca46;
     border-radius: 8px;
     font-size: 20px;
     margin: 2px;
