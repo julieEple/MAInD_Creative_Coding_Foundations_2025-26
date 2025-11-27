@@ -12,19 +12,9 @@ body{
     align-items: center;
   }
 
-/* h1{
-  font-family: "Karmatic Arcade";
-  font-weight: normal;
-  font-style: normal;
-  color: #ec0868;
-  font-size: 3.8rem;
-  margin-bottom: 0;
-  padding: 0; 
-  text-align: center;
-  line-height: 1; 
-} */
 
 #pokeImg{
+  margin: 0 auto; 
   width: 500px;
   height: auto;
   display: flex;
