@@ -1,0 +1,189 @@
+
+@font-face {
+  font-family: "Karmatic Arcade";
+  src: URL(./media/ka1.ttf) format('truetype');
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+h1{
+  font-family: "Karmatic Arcade";
+  font-weight: normal;
+  font-style: normal;
+  color: #ec0868;
+  font-size: 3.8rem;
+  margin-bottom: 0;
+  padding: 0; 
+  text-align: center;
+  line-height: 1; 
+}
+
+#container{
+  background-image: url(./media/arcade.jpg);
+  padding: 0 2rem 2rem 2rem; /* top 0, right 2rem, bottom 2rem, left 2rem */
+  border-radius: 2rem;
+  border-style: dotted;
+  border-color: #ec0868;
+}
+
+  #grid_n_avatars{
+    display: flex; 
+    flex-direction: column;
+    gap: 2px;
+    align-items: center; 
+  }
+
+  #grid {
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(12, 30px);
+    grid-template-rows: repeat(12, 30px);
+    gap: 0;
+    margin: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: dotted;
+    border-color: #ec0868;;
+  }
+
+  .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    /* border: 1px solid lightgrey; */
+    box-sizing: border-box;
+  }
+
+  #panel{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;      
+    /* background-color: aqua; */
+    /* margin-right: 5rem; */
+    gap: 1rem;
+}
+
+#panelbuttons{
+    display: flex;
+    flex-direction: column;
+    width: 120px;   
+  }
+
+  #panelbuttons #pause{
+    flex: 1;
+    border-style: outset;
+    border-color: #ec0868;
+    border-radius: 5rem;
+    font-family: "Karmatic Arcade";
+    color: #ec0868;
+    background-color: #00e9ff;
+    font-size: 1.2rem;
+  }
+
+  #panelbuttons p{
+    flex: 1;              
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Karmatic Arcade";
+    color: #ec0868;;
+  }
+
+  #panelbuttons #score{
+    display: flex;
+    /* background-color: red; */
+    font-family: "Karmatic Arcade";
+  }
+
+  
+  
+  /* avatars */
+  #avatars {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: fit-content; 
+    gap: 2px;
+    padding: 0;     
+    margin: 0;
+}
+
+.ava {
+    font-size: 32px;
+    padding: 10px;
+    /* border: 2px solid transparent; */
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.ava:hover {
+    transform: scale(1.2);
+}
+  /* direction buttons */
+
+  .button-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    /* margin: 20px auto; */
+  }
+  
+  .button-layout button {
+    width: 40px;
+    height: 40px;
+    background: #ec0868;
+    border-radius: 8px;
+    font-size: 20px;
+    margin: 2px;
+  }
+  
+  .middle-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .middle-row .center {
+    width: 40px; /* empty space between left and right */
+  }
+  
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {  /* simply change the gridsize and cell size:) */
+    #grid {
+      
+      grid-template-columns: repeat(12, 40px);
+      grid-template-rows: repeat(12, 40px);
+    }
+    .cell {
+        width: 40px;
+        height:40px;
+    }
+    .ava {
+        font-size: 30px;
+    }
+}
+
+
+@media screen and (min-width: 1023px) {
+  #grid {
+    grid-template-columns: repeat(12,50px);
+    grid-template-rows: repeat(12, 50px);
+  }
+  .cell {
+      width: 50px;
+      height:50px;
+  }
+  .ava {
+      font-size: 30px;
+  }
+}

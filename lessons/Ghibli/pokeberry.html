@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Berry Demo</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    img { width: 100px; height: 100px; }
+    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<h1>Random Berry</h1>
+<div id="container">
+  <p>Trykk på knappen for å hente et tilfeldig berry!</p>
+</div>
+<button id="random-btn">Hent Random Berry</button>
+
+<script>
+const CONTAINER = document.getElementById('container');
+
+function getRandomBerry() {
+  // 1. Hent listen over berries
+  fetch('https://pokeapi.co/api/v2/berry/')
+    .then(response => response.json())
+    .then(data => {
+      const berries = data.results;
+
+      // 2. Velg tilfeldig berry
+      const randomIndex = Math.floor(Math.random() * berries.length);
+      const randomBerry = berries[randomIndex];
+
+      // 3. Hent berry-detaljer
+      return fetch(randomBerry.url);
+    })
+    .then(response => response.json())
+    .then(berryData => {
+      // 4. Hent item-data for bildet
+      return fetch(berryData.item.url)
+        .then(response => response.json());
+    })
+    .then(itemData => {
+      // 5. Vis bildet og navnet
+      CONTAINER.innerHTML = `
+        <h2>${itemData.name}</h2>
+        <img src="${itemData.sprites.default}" alt="${itemData.name}">
+      `;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      CONTAINER.innerText = "Noe gikk galt. Prøv igjen!";
+    });
+}
+
+// Knytt funksjonen til knappen
+document.getElementById('random-btn').addEventListener('click', getRandomBerry);
+</script>
+
+</body>
+</html>
