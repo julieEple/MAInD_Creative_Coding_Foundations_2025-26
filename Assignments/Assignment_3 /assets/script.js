@@ -72,11 +72,25 @@ function showApples() {
     let c = apple.cc;
 
     if (apple.icon != "🍎") {
-    cells[r][c].innerHTML = `<img src="${apple.icon}">`; // using the API-img of the berry inside the cell-element that marks the apple
+      cells[r][c].innerHTML = `<img src="${apple.icon}">`; // using the API-img of the berry inside the cell-element that marks the apple
     } else {
-    cells[r][c].textContent = "🍎";
+      cells[r][c].textContent = "🍎";
     }
   }
+}
+
+function getRandomPoke() {
+  const randomId = Math.floor(Math.random() * 1025) + 1; //there are 1025 pokemons (i checked)
+
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`) //
+    .then((response) => response.json())
+    .then((data) => {
+      return data.sprites.front_default; // the URL to the image
+    })
+    .catch((err) => {
+      console.error("Pokemon can not be fetched- error:", err);
+      return null;
+    });
 }
 
 function getRandomBerry() {
@@ -122,12 +136,35 @@ async function makeApple() {
       }
     }
     if (!onSnake) {
-        const icon = await getRandomBerry();
-        const newApple = { rc: randR, cc: randC, icon: icon }; //temporary apple-icon until API is loaded 
-        apples.push(newApple);
-        }
+      const icon = await getRandomBerry();
+      const newApple = { rc: randR, cc: randC, icon: icon }; //temporary apple-icon until API is loaded
+      apples.push(newApple);
     }
+  }
 }
+
+async function makeAvatars() { 
+    const avatarContainer = document.getElementById("avatars");
+    avatarContainer.innerHTML = ""; //empty to begin with
+  
+    for (let i = 0; i < 5; i++) { //i want 5 random avatars
+      const icon = await getRandomPoke();
+  
+      const finalIcon = icon || "🐸"; //fallback just in case
+  
+      const div = document.createElement("div");
+      div.classList.add("ava");
+      div.innerHTML = `<img src="${finalIcon}" alt="avatar">`;
+        div.dataset.avatar = finalIcon;
+  
+      div.addEventListener("click", function () {
+        headAvatar = `<img src="${finalIcon}">`;
+      });
+  
+      avatarContainer.appendChild(div);
+    }
+  }
+  
 
 function move() {
   if (paused) return; //wouldnt want to move if we are paused ;)
@@ -232,12 +269,14 @@ function startGame() {
   resetValues();
   resetGrid();
   makeGrid();
+  makeAvatars();
   makeApple();
   showSnake();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   makeGrid();
+  makeAvatars();
   startGame();
   gameLoop();
 });
