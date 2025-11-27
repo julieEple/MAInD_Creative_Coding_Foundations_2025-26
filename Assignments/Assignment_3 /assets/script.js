@@ -47,6 +47,7 @@ function showSnake() {
     for (let c = 0; c < grid_size; c++) {
       cells[r][c].style.background = ""; //empty cell, so that
       cells[r][c].textContent = ""; //empty cell, so that
+        cells[r][c].innerHTML = ""; // testing just in case
     }
   }
   for (let i = 0; i < snake.length; i++) {
@@ -56,7 +57,7 @@ function showSnake() {
     let c = snakepart.cc;
 
     if (i === 0) {
-      cells[r][c].textContent = headAvatar;
+    cells[r][c].innerHTML = headAvatar; 
       cells[r][c].style.background = "lightyellow"; // head
     } else {
       cells[r][c].style.background = "lightpink"; //body
@@ -269,7 +270,6 @@ function startGame() {
   resetValues();
   resetGrid();
   makeGrid();
-//   makeAvatars();
   makeApple();
   showSnake();
 }

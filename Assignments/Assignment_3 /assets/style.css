@@ -115,7 +115,6 @@ body{
 }
 
 .ava {
-    font-size: 32px;
     padding: 10px;
     /* border: 2px solid transparent; */
     cursor: pointer;
@@ -166,7 +165,7 @@ body{
         height:40px;
     }
     .ava {
-        font-size: 30px;
+        font-size: 40px;
     }
 }
 
@@ -181,6 +180,6 @@ body{
       height:50px;
   }
   .ava {
-      font-size: 30px;
+      font-size: 40px;
   }
 }
