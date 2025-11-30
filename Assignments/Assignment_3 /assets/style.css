@@ -23,7 +23,7 @@ body{
 
 #container{
   background-image: url(./media/poke2.jpg);
-  padding: 0 2rem 2rem 2rem; /* top 0, right 2rem, bottom 2rem, left 2rem */
+  padding: 0 4rem 2rem 4rem; /* top 0, right 2rem, bottom 2rem, left 2rem */
   border-radius: 2rem;
   border-style: dotted;
   border-color: #fcca46;
@@ -165,7 +165,7 @@ body{
         height:40px;
     }
     .ava {
-        font-size: 40px;
+        font-size: 0px;
     }
 }
 
@@ -180,6 +180,6 @@ body{
       height:50px;
   }
   .ava {
-      font-size: 40px;
+      font-size: 30px;
   }
 }

@@ -25,7 +25,8 @@ let snake = [
   { cc: 5, rc: 7 }, // tail
 ];
 
-let berryList = []; //to be filled by Pokeberries
+let poisonBerries = [];
+const amountOfPoison = 2;
 
 //creating grid
 function makeGrid() {
@@ -71,7 +72,6 @@ function showApples() {
     let apple = apples[i];
     let r = apple.rc;
     let c = apple.cc;
-
     if (apple.icon != "🍎") {
       cells[r][c].innerHTML = `<img src="${apple.icon}">`; // using the API-img of the berry inside the cell-element that marks the apple
     } else {
@@ -79,6 +79,21 @@ function showApples() {
     }
   }
 }
+
+function showPoisonBerries() {
+    for (let i = 0; i < poisonBerries.length; i++) {
+      let berry = poisonBerries[i];
+      let r = berry.rc;
+      let c = berry.cc;
+  
+      if (berry.icon) {
+        cells[r][c].innerHTML = `<img src="${berry.icon}">`;
+      } else {
+        cells[r][c].textContent = "💀";  
+      }
+    }
+  }
+  
 
 function getRandomPoke() {
   const randomId = Math.floor(Math.random() * 1025) + 1; //there are 1025 pokemons (i checked)
@@ -123,6 +138,20 @@ function getRandomBerry() {
     });
 }
 
+function getPokeBall() {
+    return fetch("https://pokeapi.co/api/v2/item/poke-ball")   
+      .then(response => response.json())                       
+      .then(data => {
+        return data.sprites.default;                           
+      })
+      .catch(error => {
+        console.error("Feil ved henting av Poké Ball:", error);
+        return null;                                           
+      });
+  }
+  
+  
+
 async function makeApple() {
   while (apples.length < amountOfApples) {
     const randR = Math.floor(Math.random() * grid_size);
@@ -137,12 +166,37 @@ async function makeApple() {
       }
     }
     if (!onSnake) {
-      const icon = await getRandomBerry();
-      const newApple = { rc: randR, cc: randC, icon: icon }; //temporary apple-icon until API is loaded
+    //   const icon = await getRandomBerry();
+        let icon = await getPokeBall();
+      const newApple = { rc: randR, cc: randC, icon: icon }; 
       apples.push(newApple);
     }
   }
 }
+
+async function makePoisonBerries() { //fully the same as make Apple, with some adjustments for the berry
+    while (poisonBerries.length < amountOfPoison) {
+      const randR = Math.floor(Math.random() * grid_size);
+      const randC = Math.floor(Math.random() * grid_size);
+  
+      // make sure the poison berry is not placed on the snake
+      let onSnake = false;
+      for (let part of snake) {
+        if (part.rc === randR && part.cc === randC) {
+          onSnake = true;
+          break;
+        }
+      }
+  
+      if (!onSnake) {
+        const icon = await getRandomBerry(); 
+        const newPoison = { rc: randR, cc: randC, icon: icon };
+        poisonBerries.push(newPoison);
+      }
+    }
+  }
+  
+
 
 async function makeAvatars() { 
     const avatarContainer = document.getElementById("avatars");
@@ -199,9 +253,20 @@ function move() {
       break;
     }
   }
+
+  //check if eat berry 
+  for (let i = 0; i < poisonBerries.length; i++) {
+    const poison = poisonBerries[i];
+    if (poison.rc === newHead.rc && poison.cc === newHead.cc) {
+      startGame(); //Game over baby
+      return;
+    }
+  }
+
   //only remove tail if we don´t eat apple (if we eat apple the snake grows)
   if (!ate) snake.pop();
 
+  
   //check if head is crashing with body (head cooridnates == any of the other array coordinates)
   let crash = false;
   for (let i = 1; i < snake.length; i++) {
@@ -217,6 +282,7 @@ function move() {
   }
   showSnake();
   showApples();
+  showPoisonBerries();
 }
 
 function restartGame() {
@@ -249,6 +315,7 @@ function gameLoop() {
 //need to make changes so that game can be restart without .reload()
 function resetValues() {
   apples = [];
+  poisonBerries = [];
   snake = [
     { cc: 5, rc: 5 },
     { cc: 5, rc: 6 },
@@ -267,27 +334,33 @@ function resetGrid() {
 }
 
 function startGame() {
-  resetValues();
-  resetGrid();
-  makeGrid();
-  makeApple();
-  showSnake();
-}
+    makeAvatars();
+    resetValues();
+    resetGrid();
+    makeGrid();
+  
+    makeApple();
+    makePoisonBerries();
+  
+    showSnake();
+    showApples();
+    showPoisonBerries();
+  }
+  
 
 document.addEventListener("DOMContentLoaded", () => {
   makeGrid();
-  makeAvatars();
   startGame();
   gameLoop();
 });
 
 //make button panel so I can change directons
-document.getElementById("up").addEventListener("click", () => (dir = "up"));
-document.getElementById("down").addEventListener("click", () => (dir = "down"));
-document.getElementById("left").addEventListener("click", () => (dir = "left"));
-document
-  .getElementById("right")
-  .addEventListener("click", () => (dir = "right"));
+// document.getElementById("up").addEventListener("click", () => (dir = "up"));
+// document.getElementById("down").addEventListener("click", () => (dir = "down"));
+// document.getElementById("left").addEventListener("click", () => (dir = "left"));
+// document
+//   .getElementById("right")
+//   .addEventListener("click", () => (dir = "right"));
 
 // also add keyboard
 document.addEventListener("keydown", (event) => {
