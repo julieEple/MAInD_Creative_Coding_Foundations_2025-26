@@ -10,7 +10,7 @@ const amountOfApples = 3;
 let dir = "up";
 let paused = false; //ability to pause so that they can choose the character and apple/target
 const avatars = document.querySelectorAll(".avatar");
-let headAvatar = "🐸";
+let headAvatar = `<img src="assets/media/mewtwo.png">` ;
 let score = 0;
 const scoreDisplay = document.getElementById("score");
 
@@ -27,7 +27,7 @@ let snake = [
 
 let poisonBerries = [];
 const amountOfPoison = 2;
-let snakeTailColor = "yellow";
+let snakeTailColor = "#CBC3E3";
 
 //creating grid
 function makeGrid() {
@@ -67,7 +67,7 @@ function showSnake() {
   }
 }
 // Draw the apples using Pokeberries generated in getRandomBerry
-function showApples() {
+function showApples() { //updated so that these are now poison berries
   for (let i = 0; i < apples.length; i++) {
     //loop through every apple-elememnt (should be 3)
     let apple = apples[i];

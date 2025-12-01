@@ -37,7 +37,7 @@ body {
 
 #container {
   background-image: url(./media/poke2.jpg);
-  padding: 0 4rem 2rem 4rem; /* top 0, right 2rem, bottom 2rem, left 2rem */
+  padding: 0 1rem 1rem 1rem; /*0 4rem 2rem 4rem;  top 0, right 2rem, bottom 2rem, left 2rem */
   border-radius: 2rem;
   border-style: dotted;
   border-color: #fcca46;
@@ -200,3 +200,4 @@ body {
     font-size: 30px;
   }
 }
+
