@@ -27,6 +27,7 @@ let snake = [
 
 let poisonBerries = [];
 const amountOfPoison = 2;
+let snakeTailColor = "yellow";
 
 //creating grid
 function makeGrid() {
@@ -48,7 +49,7 @@ function showSnake() {
     for (let c = 0; c < grid_size; c++) {
       cells[r][c].style.background = ""; //empty cell, so that
       cells[r][c].textContent = ""; //empty cell, so that
-        cells[r][c].innerHTML = ""; // testing just in case
+      cells[r][c].innerHTML = ""; // testing just in case
     }
   }
   for (let i = 0; i < snake.length; i++) {
@@ -58,10 +59,10 @@ function showSnake() {
     let c = snakepart.cc;
 
     if (i === 0) {
-    cells[r][c].innerHTML = headAvatar; 
-      cells[r][c].style.background = "lightyellow"; // head
+      cells[r][c].innerHTML = headAvatar;
+      cells[r][c].style.background = snakeTailColor; // head
     } else {
-      cells[r][c].style.background = "lightpink"; //body
+      cells[r][c].style.background = snakeTailColor;; //body
     }
   }
 }
@@ -81,19 +82,18 @@ function showApples() {
 }
 
 function showPoisonBerries() {
-    for (let i = 0; i < poisonBerries.length; i++) {
-      let berry = poisonBerries[i];
-      let r = berry.rc;
-      let c = berry.cc;
-  
-      if (berry.icon) {
-        cells[r][c].innerHTML = `<img src="${berry.icon}">`;
-      } else {
-        cells[r][c].textContent = "💀";  
-      }
+  for (let i = 0; i < poisonBerries.length; i++) {
+    let berry = poisonBerries[i];
+    let r = berry.rc;
+    let c = berry.cc;
+
+    if (berry.icon) {
+      cells[r][c].innerHTML = `<img src="${berry.icon}">`;
+    } else {
+      cells[r][c].textContent = "💀";
     }
   }
-  
+}
 
 function getRandomPoke() {
   const randomId = Math.floor(Math.random() * 1025) + 1; //there are 1025 pokemons (i checked)
@@ -101,7 +101,14 @@ function getRandomPoke() {
   return fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`) //
     .then((response) => response.json())
     .then((data) => {
-      return data.sprites.front_default; // the URL to the image
+      const sprite = data.sprites.front_default; // the URL to the image
+
+      return fetch(data.species.url) //new URL to go deeper and get the color of the pokemon
+        .then((response) => response.json())
+        .then((speciesData) => {
+          const color = speciesData.color.name; // color is a string
+          return { sprite, color }; //returns both the color-string and the pokemom
+        });
     })
     .catch((err) => {
       console.error("Pokemon can not be fetched- error:", err);
@@ -139,18 +146,16 @@ function getRandomBerry() {
 }
 
 function getPokeBall() {
-    return fetch("https://pokeapi.co/api/v2/item/poke-ball")   
-      .then(response => response.json())                       
-      .then(data => {
-        return data.sprites.default;                           
-      })
-      .catch(error => {
-        console.error("Feil ved henting av Poké Ball:", error);
-        return null;                                           
-      });
-  }
-  
-  
+  return fetch("https://pokeapi.co/api/v2/item/poke-ball")
+    .then((response) => response.json())
+    .then((data) => {
+      return data.sprites.default;
+    })
+    .catch((error) => {
+      console.error("Feil ved henting av Poké Ball:", error);
+      return null;
+    });
+}
 
 async function makeApple() {
   while (apples.length < amountOfApples) {
@@ -166,60 +171,62 @@ async function makeApple() {
       }
     }
     if (!onSnake) {
-    //   const icon = await getRandomBerry();
-        let icon = await getPokeBall();
-      const newApple = { rc: randR, cc: randC, icon: icon }; 
+      //   const icon = await getRandomBerry();
+      let icon = await getPokeBall();
+      const newApple = { rc: randR, cc: randC, icon: icon };
       apples.push(newApple);
     }
   }
 }
 
-async function makePoisonBerries() { //fully the same as make Apple, with some adjustments for the berry
-    while (poisonBerries.length < amountOfPoison) {
-      const randR = Math.floor(Math.random() * grid_size);
-      const randC = Math.floor(Math.random() * grid_size);
-  
-      // make sure the poison berry is not placed on the snake
-      let onSnake = false;
-      for (let part of snake) {
-        if (part.rc === randR && part.cc === randC) {
-          onSnake = true;
-          break;
-        }
-      }
-  
-      if (!onSnake) {
-        const icon = await getRandomBerry(); 
-        const newPoison = { rc: randR, cc: randC, icon: icon };
-        poisonBerries.push(newPoison);
+async function makePoisonBerries() {
+  //fully the same as make Apple, with some adjustments for the berry
+  while (poisonBerries.length < amountOfPoison) {
+    const randR = Math.floor(Math.random() * grid_size);
+    const randC = Math.floor(Math.random() * grid_size);
+
+    // make sure the poison berry is not placed on the snake
+    let onSnake = false;
+    for (let part of snake) {
+      if (part.rc === randR && part.cc === randC) {
+        onSnake = true;
+        break;
       }
     }
-  }
-  
 
-
-async function makeAvatars() { 
-    const avatarContainer = document.getElementById("avatars");
-    avatarContainer.innerHTML = ""; //empty to begin with
-  
-    for (let i = 0; i < 5; i++) { //i want 5 random avatars
-      const icon = await getRandomPoke();
-  
-      const finalIcon = icon || "🐸"; //fallback just in case
-  
-      const div = document.createElement("div");
-      div.classList.add("ava");
-      div.innerHTML = `<img src="${finalIcon}" alt="avatar">`;
-        div.dataset.avatar = finalIcon;
-  
-      div.addEventListener("click", function () {
-        headAvatar = `<img src="${finalIcon}">`;
-      });
-  
-      avatarContainer.appendChild(div);
+    if (!onSnake) {
+      const icon = await getRandomBerry();
+      const newPoison = { rc: randR, cc: randC, icon: icon };
+      poisonBerries.push(newPoison);
     }
   }
-  
+}
+
+async function makeAvatars() {
+  const avatarContainer = document.getElementById("avatars");
+  avatarContainer.innerHTML = ""; //empty to begin with
+
+  for (let i = 0; i < 5; i++) {
+    //i want 5 random avatars
+    const poke = await getRandomPoke(); //using await so that API can load before its being used
+
+    const finalIcon = poke.sprite || "🐸";
+
+    const div = document.createElement("div");
+    div.classList.add("ava");
+    div.innerHTML = `<img src="${finalIcon}" alt="avatar">`;
+
+    div.dataset.avatar = finalIcon;
+    div.dataset.color = poke.color; 
+
+    div.addEventListener("click", function () {
+        headAvatar = `<img src="${this.dataset.avatar}">`;
+        snakeTailColor = this.dataset.color;
+    });
+
+    avatarContainer.appendChild(div);
+  }
+}
 
 function move() {
   if (paused) return; //wouldnt want to move if we are paused ;)
@@ -254,7 +261,7 @@ function move() {
     }
   }
 
-  //check if eat berry 
+  //check if eat berry
   for (let i = 0; i < poisonBerries.length; i++) {
     const poison = poisonBerries[i];
     if (poison.rc === newHead.rc && poison.cc === newHead.cc) {
@@ -266,7 +273,6 @@ function move() {
   //only remove tail if we don´t eat apple (if we eat apple the snake grows)
   if (!ate) snake.pop();
 
-  
   //check if head is crashing with body (head cooridnates == any of the other array coordinates)
   let crash = false;
   for (let i = 1; i < snake.length; i++) {
@@ -334,19 +340,18 @@ function resetGrid() {
 }
 
 function startGame() {
-    makeAvatars();
-    resetValues();
-    resetGrid();
-    makeGrid();
-  
-    makeApple();
-    makePoisonBerries();
-  
-    showSnake();
-    showApples();
-    showPoisonBerries();
-  }
-  
+  makeAvatars();
+  resetValues();
+  resetGrid();
+  makeGrid();
+
+  makeApple();
+  makePoisonBerries();
+
+  showSnake();
+  showApples();
+  showPoisonBerries();
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   makeGrid();
