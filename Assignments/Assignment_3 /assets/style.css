@@ -12,14 +12,31 @@ body{
     align-items: center;
   }
 
-
-#pokeImg{
+/* headerimg */
+#pokeImg{ 
   margin: 0 auto; 
   width: 500px;
   height: auto;
   display: flex;
   justify-content: center;
 }
+
+/* want the img to fill the cell */
+.cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  display: block;
+}
+
+.ava img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
 
 #container{
   background-image: url(./media/poke2.jpg);
