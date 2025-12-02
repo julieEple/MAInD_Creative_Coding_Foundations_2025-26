@@ -29,6 +29,9 @@ let poisonBerries = [];
 const amountOfPoison = 2;
 let snakeTailColor = "#CBC3E3";
 
+let highscores = JSON.parse(localStorage.getItem("highscores")) || []; //want to save the scores also when window is closed 
+
+
 //creating grid
 function makeGrid() {
   for (let r = 0; r < grid_size; r++) {
@@ -318,6 +321,38 @@ function gameLoop() {
   setTimeout(gameLoop, speed);
 }
 
+function saveHighscore() {
+    // saving the avatar/pokemon and the score and adding to the highscores array 
+    const entry = {
+        avatar: headAvatar,
+        score: score
+    };
+
+    highscores.push(entry); //adding to highscores array<3 
+
+    // sorting - highest score to lowest score
+    highscores.sort((a, b) => b.score - a.score);
+
+    // using slice to only keep the top 10 (should work?) 
+    highscores = highscores.slice(0, 10);
+
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+}
+
+function showHighscores() { //the highscore screen
+    const list = document.getElementById("highscore-list");
+    list.innerHTML = "";
+
+    highscores.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML =
+            `#${index + 1} — <img src="${item.avatar}" Score: ${item.score}`;
+        list.appendChild(li);
+    });
+}
+
+
+
 //need to make changes so that game can be restart without .reload()
 function resetValues() {
   apples = [];
@@ -351,6 +386,8 @@ function startGame() {
   showSnake();
   showApples();
   showPoisonBerries();
+
+  saveHighscore();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -359,13 +396,20 @@ document.addEventListener("DOMContentLoaded", () => {
   gameLoop();
 });
 
-//make button panel so I can change directons
-// document.getElementById("up").addEventListener("click", () => (dir = "up"));
-// document.getElementById("down").addEventListener("click", () => (dir = "down"));
-// document.getElementById("left").addEventListener("click", () => (dir = "left"));
-// document
-//   .getElementById("right")
-//   .addEventListener("click", () => (dir = "right"));
+//navigation between grid-screen and highscore screen 
+document.getElementById("highscores-btn").addEventListener("click", () => {
+    document.getElementById("game-screen").style.display = "none";
+    document.getElementById("highscore-screen").style.display = "block";
+    showHighscores();
+});
+
+
+document.getElementById("back-btn").addEventListener("click", () => {
+    document.getElementById("highscore-screen").style.display = "none";
+    document.getElementById("game-screen").style.display = "block";
+});
+
+
 
 // also add keyboard
 document.addEventListener("keydown", (event) => {

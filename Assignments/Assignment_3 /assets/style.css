@@ -37,7 +37,7 @@ body {
 
 #container {
   background-image: url(./media/poke2.jpg);
-  padding: 0 1rem 1rem 1rem; /*0 4rem 2rem 4rem;  top 0, right 2rem, bottom 2rem, left 2rem */
+  padding: 0 1rem 1rem 1rem;/*0 4rem 2rem 4rem;  top 0, right 2rem, bottom 2rem, left 2rem */
   border-radius: 2rem;
   border-style: dotted;
   border-color: #fcca46;
@@ -143,34 +143,16 @@ body {
 .ava:hover {
   transform: scale(1.2);
 }
-/* direction buttons */
 
-.button-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 120px;
-  /* margin: 20px auto; */
+
+#highscore-screen {
+  display: none;
+  text-align: center;
+  color: #fcca46;
+  font-family: "Karmatic Arcade";
 }
 
-.button-layout button {
-  width: 40px;
-  height: 40px;
-  background: #fcca46;
-  border-radius: 8px;
-  font-size: 20px;
-  margin: 2px;
-}
 
-.middle-row {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.middle-row .center {
-  width: 40px; /* empty space between left and right */
-}
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   /* simply change the gridsize and cell size:) */
