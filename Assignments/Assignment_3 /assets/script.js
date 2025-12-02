@@ -49,7 +49,7 @@ function makeGrid() {
 
 
 function getRandomPoke() {
-  const randomId = Math.floor(Math.random() * 1025) + 1; //there are 1025 pokemons (i checked)
+  const randomId = Math.floor(Math.random() * 1025); //there are 1025 pokemons (i checked)
 
   return fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`) //
     .then((response) => response.json())
@@ -93,7 +93,6 @@ function getRandomBerry() {
       return itemData.sprites.default;
     })
     .catch((error) => {
-      console.error("Error fetching berry:", error);
       return null; // simple fallback
     });
 }
@@ -105,7 +104,6 @@ function getPokeBall() {
       return data.sprites.default;
     })
     .catch((error) => {
-      console.error("Feil ved henting av Poké Ball:", error);
       return null;
     });
 }
@@ -343,7 +341,7 @@ function saveHighscore() {
   if (existing) {
     // Update the score only if the new score is higher
     if (score > existing.score) {
-      existing.score = score;
+      existing.score = score; //updates score if the new score is better
     }
   } else {
     // Add new entry if the pokemon is not mentioned in the list
