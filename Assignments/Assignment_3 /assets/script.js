@@ -342,14 +342,18 @@ function gameLoop() {
 
 function saveHighscore() {
     if (!headAvatar) headAvatar = "assets/media/mewtwo.png"; // testing - fallback to ensure a pokemon is being sent 
+     //now check if the pokemon isalready featured 
+     const existing = highscores.find(item => item.avatar === headAvatar);
 
-    // saving the avatar/pokemon and the score and adding to the highscores array 
-    const entry = {
-        avatar: headAvatar,
-        score: score
-    };
-
-    highscores.push(entry); //adding to highscores array<3 
+    if (existing) {
+        // Update the score only if the new score is higher
+        if (score > existing.score) {
+            existing.score = score;
+        }
+    } else {
+        // Add new entry if the pokemon is not mentioned in the list
+        highscores.push({ avatar: headAvatar, score: score });
+    }
 
     // sorting - highest score to lowest score
     highscores.sort((a, b) => b.score - a.score);
