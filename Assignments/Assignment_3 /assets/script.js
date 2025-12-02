@@ -10,7 +10,7 @@ const amountOfApples = 3;
 let dir = "up";
 let paused = false; //ability to pause so that they can choose the character and apple/target
 const avatars = document.querySelectorAll(".avatar");
-let headAvatar = `<img src="assets/media/mewtwo.png">` ;
+let headAvatar = "assets/media/mewtwo.png"; 
 let score = 0;
 const scoreDisplay = document.getElementById("score");
 
@@ -62,8 +62,8 @@ function showSnake() {
     let c = snakepart.cc;
 
     if (i === 0) {
-      cells[r][c].innerHTML = headAvatar;
-      cells[r][c].style.background = snakeTailColor; // head
+        cells[r][c].innerHTML = `<img src="${headAvatar}" alt="head" />`;
+        cells[r][c].style.background = snakeTailColor; // head
     } else {
       cells[r][c].style.background = snakeTailColor;; //body
     }
@@ -96,6 +96,18 @@ function showPoisonBerries() {
       cells[r][c].textContent = "💀";
     }
   }
+}
+
+function showHighscores() { //the highscore screen
+    const list = document.getElementById("highscore-list");
+    list.innerHTML = "";
+
+    highscores.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML =
+        li.innerHTML = `#${index + 1} — <img src="${item.avatar}" Score: ${item.score}`;
+        list.appendChild(li);
+    });
 }
 
 function getRandomPoke() {
@@ -223,8 +235,8 @@ async function makeAvatars() {
     div.dataset.color = poke.color; 
 
     div.addEventListener("click", function () {
-        headAvatar = `<img src="${this.dataset.avatar}">`;
-        snakeTailColor = this.dataset.color;
+        headAvatar = this.dataset.avatar; 
+            snakeTailColor = this.dataset.color;
     });
 
     avatarContainer.appendChild(div);
@@ -338,20 +350,6 @@ function saveHighscore() {
 
     localStorage.setItem("highscores", JSON.stringify(highscores));
 }
-
-function showHighscores() { //the highscore screen
-    const list = document.getElementById("highscore-list");
-    list.innerHTML = "";
-
-    highscores.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.innerHTML =
-            `#${index + 1} — <img src="${item.avatar}" Score: ${item.score}`;
-        list.appendChild(li);
-    });
-}
-
-
 
 //need to make changes so that game can be restart without .reload()
 function resetValues() {
