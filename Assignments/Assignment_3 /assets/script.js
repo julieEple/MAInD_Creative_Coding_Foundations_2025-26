@@ -98,17 +98,21 @@ function showPoisonBerries() {
   }
 }
 
-function showHighscores() { //the highscore screen
+function showHighscores() {
     const list = document.getElementById("highscore-list");
     list.innerHTML = "";
 
     highscores.forEach((item, index) => {
         const li = document.createElement("li");
-        li.innerHTML =
-        li.innerHTML = `#${index + 1} — <img src="${item.avatar}" Score: ${item.score}`;
+        li.innerHTML = `#${index + 1} — <img src="${item.avatar}"> — Score: ${item.score}`;
         list.appendChild(li);
     });
 }
+
+
+
+
+
 
 function getRandomPoke() {
   const randomId = Math.floor(Math.random() * 1025) + 1; //there are 1025 pokemons (i checked)
@@ -225,7 +229,7 @@ async function makeAvatars() {
     //i want 5 random avatars
     const poke = await getRandomPoke(); //using await so that API can load before its being used
 
-    const finalIcon = poke.sprite || "🐸";
+    const finalIcon = poke.sprite || "assets/media/mewtwo.png";;
 
     const div = document.createElement("div");
     div.classList.add("ava");
@@ -236,7 +240,7 @@ async function makeAvatars() {
 
     div.addEventListener("click", function () {
         headAvatar = this.dataset.avatar; 
-            snakeTailColor = this.dataset.color;
+        snakeTailColor = this.dataset.color;
     });
 
     avatarContainer.appendChild(div);
@@ -261,6 +265,7 @@ function move() {
     newHead.cc < 0 ||
     newHead.cc >= grid_size
   ) {
+    saveHighscore();
     startGame();
     return;
   }
@@ -280,6 +285,7 @@ function move() {
   for (let i = 0; i < poisonBerries.length; i++) {
     const poison = poisonBerries[i];
     if (poison.rc === newHead.rc && poison.cc === newHead.cc) {
+        saveHighscore();
       startGame(); //Game over baby
       return;
     }
@@ -299,6 +305,7 @@ function move() {
   }
   if (crash == true) {
     console.log("den krsæjet");
+    saveHighscore();
     startGame();
   }
   showSnake();
@@ -334,6 +341,8 @@ function gameLoop() {
 }
 
 function saveHighscore() {
+    if (!headAvatar) headAvatar = "assets/media/mewtwo.png"; // testing - fallback to ensure a pokemon is being sent 
+
     // saving the avatar/pokemon and the score and adding to the highscores array 
     const entry = {
         avatar: headAvatar,
@@ -384,8 +393,6 @@ function startGame() {
   showSnake();
   showApples();
   showPoisonBerries();
-
-  saveHighscore();
 }
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -152,6 +152,29 @@ body {
   font-family: "Karmatic Arcade";
 }
 
+/* Highscore list */
+#highscore-list {
+  list-style: none;   
+  padding: 0;
+  margin: 0;
+}
+
+#highscore-list li {
+  display: flex;
+  align-items: center;  
+  gap: 8px;             
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+#highscore-list li img {
+  width: 32px;          
+  height: 32px;         
+  object-fit: contain;  
+  vertical-align: middle;
+}
+
+
 
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
