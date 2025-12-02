@@ -7,19 +7,19 @@ const cells = []; //2D array of rows with columns
 let apples = [];
 const amountOfApples = 3;
 
-let dir = "up";
+let dir = "up"; //staring direction of the snake will be up 
 let paused = false; //ability to pause so that they can choose the character and apple/target
-const avatars = document.querySelectorAll(".avatar");
-let headAvatar = "assets/media/mewtwo.png"; 
-let score = 0;
-const scoreDisplay = document.getElementById("score");
+const avatars = document.querySelectorAll(".avatar"); //getting the avatars
+let headAvatar = "assets/media/mewtwo.png"; //default avatar/snakehead is a png from assets not the API just for performance reasons
+let score = 0; //obvi the starting score is 0 
+const scoreDisplay = document.getElementById("score"); //need to dispaly the score through this html element
 
 let speed = 500; // beginning speed
 let speedIncrement = 10; // to reduce the interval == make speed up
 let minSpeed = 100; //not make it tooooo hard
 
 let snake = [
-  //starting snake can´t be
+  //starting snake can´t be empty
   { cc: 5, rc: 5 },
   { cc: 5, rc: 6 },
   { cc: 5, rc: 7 }, // tail
@@ -29,8 +29,7 @@ let poisonBerries = [];
 const amountOfPoison = 2;
 let snakeTailColor = "#CBC3E3";
 
-let highscores = JSON.parse(localStorage.getItem("highscores")) || []; //want to save the scores also when window is closed 
-
+let highscores = JSON.parse(localStorage.getItem("highscores")) || []; //want to save the scores also when window is closed
 
 //creating grid
 function makeGrid() {
@@ -46,71 +45,6 @@ function makeGrid() {
     cells.push(row); //row is added to 2D array of rows with column cells
   }
 }
-
-function showSnake() {
-  for (let r = 0; r < grid_size; r++) {
-    for (let c = 0; c < grid_size; c++) {
-      cells[r][c].style.background = ""; //empty cell, so that
-      cells[r][c].textContent = ""; //empty cell, so that
-      cells[r][c].innerHTML = ""; // testing just in case
-    }
-  }
-  for (let i = 0; i < snake.length; i++) {
-    //go through every part of the snake (every cell element)
-    let snakepart = snake[i];
-    let r = snakepart.rc;
-    let c = snakepart.cc;
-
-    if (i === 0) {
-        cells[r][c].innerHTML = `<img src="${headAvatar}" alt="head" />`;
-        cells[r][c].style.background = snakeTailColor; // head
-    } else {
-      cells[r][c].style.background = snakeTailColor;; //body
-    }
-  }
-}
-// Draw the apples using Pokeberries generated in getRandomBerry
-function showApples() { //updated so that these are now poison berries
-  for (let i = 0; i < apples.length; i++) {
-    //loop through every apple-elememnt (should be 3)
-    let apple = apples[i];
-    let r = apple.rc;
-    let c = apple.cc;
-    if (apple.icon != "🍎") {
-      cells[r][c].innerHTML = `<img src="${apple.icon}">`; // using the API-img of the berry inside the cell-element that marks the apple
-    } else {
-      cells[r][c].textContent = "🍎";
-    }
-  }
-}
-
-function showPoisonBerries() {
-  for (let i = 0; i < poisonBerries.length; i++) {
-    let berry = poisonBerries[i];
-    let r = berry.rc;
-    let c = berry.cc;
-
-    if (berry.icon) {
-      cells[r][c].innerHTML = `<img src="${berry.icon}">`;
-    } else {
-      cells[r][c].textContent = "💀";
-    }
-  }
-}
-
-function showHighscores() {
-    const list = document.getElementById("highscore-list");
-    list.innerHTML = "";
-
-    highscores.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `#${index + 1} — <img src="${item.avatar}"> — Score: ${item.score}`;
-        list.appendChild(li);
-    });
-}
-
-
-
 
 
 
@@ -186,7 +120,8 @@ async function makeApple() {
     for (let part of snake) {
       if (part.rc === randR && part.cc === randC) {
         onSnake = true;
-        break; // breaks if true
+        makeApple();
+        return;
       }
     }
     if (!onSnake) {
@@ -229,25 +164,91 @@ async function makeAvatars() {
     //i want 5 random avatars
     const poke = await getRandomPoke(); //using await so that API can load before its being used
 
-    const finalIcon = poke.sprite || "assets/media/mewtwo.png";;
+    const finalIcon = poke.sprite || "assets/media/mewtwo.png";
 
     const div = document.createElement("div");
     div.classList.add("ava");
     div.innerHTML = `<img src="${finalIcon}" alt="avatar">`;
 
     div.dataset.avatar = finalIcon;
-    div.dataset.color = poke.color; 
+    div.dataset.color = poke.color;
 
     div.addEventListener("click", function () {
-        headAvatar = this.dataset.avatar; 
-        snakeTailColor = this.dataset.color;
+      headAvatar = this.dataset.avatar;
+      snakeTailColor = this.dataset.color;
     });
 
     avatarContainer.appendChild(div);
   }
 }
 
-function move() {
+function showSnake() {
+    for (let r = 0; r < grid_size; r++) { //loop through 2D array of cells 
+      for (let c = 0; c < grid_size; c++) {
+        cells[r][c].style.background = ""; //empty cell, so that
+        cells[r][c].textContent = ""; //empty cell, so that
+        cells[r][c].innerHTML = ""; // testing just in case
+      }
+    }
+    for (let i = 0; i < snake.length; i++) { 
+      //go through every part of the snake (every cell element)
+      let snakepart = snake[i];
+      let r = snakepart.rc;
+      let c = snakepart.cc;
+  
+      if (i === 0) {
+        cells[r][c].innerHTML = `<img src="${headAvatar}" alt="head" />`;
+        cells[r][c].style.background = snakeTailColor; // head
+      } else {
+        cells[r][c].style.background = snakeTailColor; //body
+      }
+    }
+  }
+  // Draw the apples using Pokeberries generated in getRandomBerry
+  function showApples() {
+    //updated so that these are now poison berries
+    for (let i = 0; i < apples.length; i++) {
+      //loop through every apple-elememnt (should be 3)
+      let apple = apples[i];
+      let r = apple.rc;
+      let c = apple.cc;
+      if (apple.icon != "🍎") {
+        cells[r][c].innerHTML = `<img src="${apple.icon}">`; // using the API-img of the berry inside the cell-element that marks the apple
+      } else {
+        cells[r][c].textContent = "🍎";
+      }
+    }
+  }
+  
+  function showPoisonBerries() {
+    for (let i = 0; i < poisonBerries.length; i++) {
+      let berry = poisonBerries[i];
+      let r = berry.rc;
+      let c = berry.cc;
+  
+      if (berry.icon) {
+        cells[r][c].innerHTML = `<img src="${berry.icon}">`;
+      } else {
+        cells[r][c].textContent = "💀";
+      }
+    }
+  }
+  
+  function showHighscores() {
+    const list = document.getElementById("highscore-list");
+    list.innerHTML = "";
+  
+    highscores.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.innerHTML = `#${index + 1} — <img src="${item.avatar}"> — Score: ${
+        item.score
+      }`;
+      list.appendChild(li);
+    });
+  }
+
+function move() { //is called on an interval and assigned new head and potentially remove tail
+    //condtitions: eat apple, berry or tail 
   if (paused) return; //wouldnt want to move if we are paused ;)
 
   let head = snake[0];
@@ -280,17 +281,15 @@ function move() {
       break;
     }
   }
-
-  //check if eat berry
+  //check if eat berry = game over
   for (let i = 0; i < poisonBerries.length; i++) {
     const poison = poisonBerries[i];
     if (poison.rc === newHead.rc && poison.cc === newHead.cc) {
-        saveHighscore();
+      saveHighscore();
       startGame(); //Game over baby
       return;
     }
   }
-
   //only remove tail if we don´t eat apple (if we eat apple the snake grows)
   if (!ate) snake.pop();
 
@@ -313,10 +312,6 @@ function move() {
   showPoisonBerries();
 }
 
-function restartGame() {
-  // location.reload();
-  startGame();
-}
 
 function updateScore() {
   scoreDisplay.textContent = score;
@@ -341,27 +336,27 @@ function gameLoop() {
 }
 
 function saveHighscore() {
-    if (!headAvatar) headAvatar = "assets/media/mewtwo.png"; // testing - fallback to ensure a pokemon is being sent 
-     //now check if the pokemon isalready featured 
-     const existing = highscores.find(item => item.avatar === headAvatar);
+  if (!headAvatar) headAvatar = "assets/media/mewtwo.png"; // testing - fallback to ensure a pokemon is being sent
+  //now check if the pokemon isalready featured
+  const existing = highscores.find((item) => item.avatar === headAvatar);
 
-    if (existing) {
-        // Update the score only if the new score is higher
-        if (score > existing.score) {
-            existing.score = score;
-        }
-    } else {
-        // Add new entry if the pokemon is not mentioned in the list
-        highscores.push({ avatar: headAvatar, score: score });
+  if (existing) {
+    // Update the score only if the new score is higher
+    if (score > existing.score) {
+      existing.score = score;
     }
+  } else {
+    // Add new entry if the pokemon is not mentioned in the list
+    highscores.push({ avatar: headAvatar, score: score });
+  }
 
-    // sorting - highest score to lowest score
-    highscores.sort((a, b) => b.score - a.score);
+  // sorting - highest score to lowest score
+  highscores.sort((a, b) => b.score - a.score);
 
-    // using slice to only keep the top 10 (should work?) 
-    highscores = highscores.slice(0, 10);
+  // using slice to only keep the top 10 (should work?)
+  highscores = highscores.slice(0, 10);
 
-    localStorage.setItem("highscores", JSON.stringify(highscores));
+  localStorage.setItem("highscores", JSON.stringify(highscores));
 }
 
 //need to make changes so that game can be restart without .reload()
@@ -405,20 +400,17 @@ document.addEventListener("DOMContentLoaded", () => {
   gameLoop();
 });
 
-//navigation between grid-screen and highscore screen 
+//navigation between grid-screen and highscore screen
 document.getElementById("highscores-btn").addEventListener("click", () => {
-    document.getElementById("game-screen").style.display = "none";
-    document.getElementById("highscore-screen").style.display = "block";
-    showHighscores();
+  document.getElementById("game-screen").style.display = "none";
+  document.getElementById("highscore-screen").style.display = "block";
+  showHighscores();
 });
-
 
 document.getElementById("back-btn").addEventListener("click", () => {
-    document.getElementById("highscore-screen").style.display = "none";
-    document.getElementById("game-screen").style.display = "block";
+  document.getElementById("highscore-screen").style.display = "none";
+  document.getElementById("game-screen").style.display = "block";
 });
-
-
 
 // also add keyboard
 document.addEventListener("keydown", (event) => {

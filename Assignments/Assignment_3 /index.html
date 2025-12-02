@@ -11,36 +11,35 @@
     <div id="container">
       <!-- <h1> Pokesnake</h1> -->
       <img src="/assets/media/pokesnake.png" id="pokeImg" />
-      <div id="highscore-screen" style="display:none;"> 
+      <div id="highscore-screen" style="display: none">
         <h2>10 Best Scores</h2>
         <ul id="highscore-list"></ul>
         <button id="back-btn">Back</button>
-    </div>
+      </div>
 
       <div id="game-screen">
-      <!-- not displaying the highscore in the play-screen, only when button is clicked  -->
-    
-    
-      <div id="panel">
-        <div id="panelbuttons">
-          <img
-            id="pokeball-icon"
-            src="assets/media/pokeball.png"
-            alt="Poké Ball"
-          />
-          <p>Score: <span id="score">0</span></p>
-          <button id="highscores-btn">Highscores</button>
-          <button id="pause">Pause</button>
-        </div>
-        <div id="grid_n_avatars">
-          <div id="berries-score"></div>
-          <div id="grid"></div>
-          <div id="avatars"></div>
+        <!-- not displaying the highscore in the play-screen, only when button is clicked  -->
+
+        <div id="panel">
+          <div id="panelbuttons">
+            <img
+              id="pokeball-icon"
+              src="assets/media/pokeball.png"
+              alt="Poké Ball"
+            />
+            <p>Score: <span id="score">0</span></p>
+            <button id="highscores-btn">Highscores</button>
+            <button id="pause">Pause</button>
+          </div>
+          <div id="grid_n_avatars">
+            <div id="berries-score"></div>
+            <div id="grid"></div>
+            <div id="avatars"></div>
+          </div>
         </div>
       </div>
+      <audio id="eatSound" src="assets/media/pokesound.mp3"></audio>
+      <script src="assets/script.js"></script>
     </div>
-    <audio id="eatSound" src="assets/media/pokesound.mp3"></audio>
-    <script src="assets/script.js"></script>
-  </div>
   </body>
 </html>

@@ -37,7 +37,7 @@ body {
 
 #container {
   background-image: url(./media/poke2.jpg);
-  padding: 0 1rem 1rem 1rem;/*0 4rem 2rem 4rem;  top 0, right 2rem, bottom 2rem, left 2rem */
+  padding: 0 1rem 1rem 1rem; /*0 4rem 2rem 4rem;  top 0, right 2rem, bottom 2rem, left 2rem */
   border-radius: 2rem;
   border-style: dotted;
   border-color: #fcca46;
@@ -96,7 +96,7 @@ body {
   height: 25px;
 }
 
-#panelbuttons #pause, 
+#panelbuttons #pause,
 #panelbuttons #highscores-btn {
   flex: 1;
   border-style: outset;
@@ -145,7 +145,6 @@ body {
   transform: scale(1.2);
 }
 
-
 #highscore-screen {
   display: none;
   text-align: center;
@@ -155,7 +154,7 @@ body {
 
 /* Highscore list */
 #highscore-list {
-  list-style: none;   
+  list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
@@ -165,16 +164,16 @@ body {
 
 #highscore-list li {
   display: flex;
-  align-items: center;  
-  gap: 8px;             
+  align-items: center;
+  gap: 8px;
   font-size: 18px;
   margin-bottom: 6px;
 }
 
 #highscore-list li img {
-  width: 32px;          
-  height: 32px;         
-  object-fit: contain;  
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
   vertical-align: middle;
 }
 
@@ -188,11 +187,6 @@ body {
   background-color: #5084c4;
   font-size: 1.2rem;
 }
-
-
-
-
-
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   /* simply change the gridsize and cell size:) */
@@ -222,4 +216,3 @@ body {
     font-size: 30px;
   }
 }
-
