@@ -8,18 +8,28 @@ Choose a “mini-game” to rebuild with HTML, CSS and JavaScript. The requireme
 - Use the keyboard to control the game (indicate what are the controls in the page). You can also use buttons (mouse), but also keyboard. ✅
 - Use some multimedia files (audio, video, …) ✅
 - Implement an “automatic restart” in the game (that is not done via the refresh of the page) ✅
+- Use a web API (you choose which one best fists for your project) to load the data and display them in the webpage ✅
+- At least one multimedia file (for user feedback interactions, or content itself) ✅
+- Develop a navigation system that allows the user to navigate different sections with related content and functionalities ✅
 
 # Screenshots:
 ### 
-![Screen 1](./assets/media/docu2.png)
+![Screen 1](./assets/media/docu1.png)
 
 ### 
-![Scren 2](./assets/media/docu1.png)
+![Scren 2](./assets/media/docu2.png)
 
 ### Snake description:
 I chose snake, which I am sure we are all very familiar with. My game has the original simple logic where a snake chases an apple. However, which some creative liberties I made it a little bit more interesting and unique. You can choose your avatar, and which the avatar the "apple" also changes. With every time the snake (or genie, santa, frog etc) its the apple the snake grows and the speed increases, aswell as an mp3 audio file being played. You can change the direction of the snake-movement with your keyboard or the direction buttons. You can also pause and resume the game whenever. 
 
-![Flow](./assets/media/docusnake.png)
+New addition: Pokemon API! I have updates the avatars to be random pokemons, and added poisonous poke-berries. The apples are also updated to be pokeballs. I have also added a new screen which shows the top 10 best games and which pokemon has the best score. 
+
+![Flow](./assets/media/docusnake.png) 
+I stupidly did not save the Drawio file and am unable to update it it with the API calls. The API is called in getRandomBerry(), getRandomPoke() and getPokeball() and are all used in my make and show functions. 
+MakeAPple calls getPokeBall to get the icon for the apples. makePoisonBerries() calls getRandomBerry and send it to the startGame() funtion to fill it with poisonous berries. makeAvatar calls getRandomPoke() to get the pokemons png and color. 
+
+The highscore is updated in eatApple by calling upDateScore() and is saved whenever startGame() is called with a function saveHighscore() to check and see if the score is worth saving. Its is showed through showHighscore() which pushes it to html. 
+
 
 # Functions:
 Lets start with declaring and explaining some of the variables that are used and decalred in my js. 
@@ -44,6 +54,8 @@ The grid, which is a 2D Array of rows each with 12 column-cells. Every cell is i
 
 Summ: Grid is a 2D array of rows with (column-)cells. The apples and the snake are visualised by accessing different cell-elements, which can be found in the resepctive array. 
 
+I have tried to logically cluster the functions by use - first the makeGrid, then all the get functions which collects data from the APIs, then the make-functions which use the the get functions to fill the structures they make (mostly arrays). Then the show functions which fills the grid-cells/arrays made in the make-functions with content. Then comes the move function which is where all the magic happens, and then the other random functions such as eatApple, updateScore, resetValues etc, which are less logical shorter functions.  
+
 # Functions:
 The first functions to be called are makeGrid(), makeApple() and showSnake(). These are all loaded after the DOM-content is loader through an EventListener.
 
@@ -52,6 +64,13 @@ Loops through the 2D-array to create a cell-element for every element of the gri
 
 ## function makeApple() 
 simple function to fill the apple-array and scatter the apples around the grid. Start by whilelooping and checking how many elements are in apple-array. If less than amountOfApples Variable it creates new apples. To create the apples it generates variables to store random coordinates where the apples can be placed. In other words we are generating random row and column-coordinates for the cell-elements. I added a small if check to make sure the apples are not generated in the same coordinates as the head-snake-element, by using a boolean which is switched if the coordinates match. The apple will only be added to the array if the boolean is false. 
+
+## function makePoisonBerries() 
+is almost identical to makeApple()-function, except it generates berries and not apples. 
+
+## function makeAvatars() 
+
+
 
 ## function showSnake() 
 starts by looping through all the elements and filling them with `` emptyness. The default of the grid-cells is naturally to be empty. 
