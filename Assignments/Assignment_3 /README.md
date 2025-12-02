@@ -175,5 +175,5 @@ New: new eventlistener for highscore-screen navigation. displays either the game
 
 ## Content and data sources
 
-bite sound: https://uppbeat.io/
-https://jwt-f.uppbeat.io/audio-files/b7c9c31af312304d2baa0b6434e93928/f5e1f58525487d4427537e6e2779cfdb/1d2a65eb4c7959d0d279a34602780501/apple-bite-joshua-chivers-1-00-00.mp3?auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiaWQiOiIzOTI0ODM0IiwiczMiOiJodHRwczovL2Nkbi51cHBiZWF0LmlvLyIsImFzc2V0IjoiYXVkaW8tZmlsZXMvYjdjOWMzMWFmMzEyMzA0ZDJiYWEwYjY0MzRlOTM5MjgvZjVlMWY1ODUyNTQ4N2Q0NDI3NTM3ZTZlMjc3OWNmZGIvMWQyYTY1ZWI0Yzc5NTlkMGQyNzlhMzQ2MDI3ODA1MDEvYXBwbGUtYml0ZS1qb3NodWEtY2hpdmVycy0xLTAwLTAwLm1wMyIsIm5iZiI6MTc2MzQ4OTY2OCwiZXhwIjoxNzYzNDg5NzI4LCJpYXQiOjE3NjM0ODk2NjgsImlzcyI6IlVwcGJlYXQtQXV0aGVudGljYXRpb24tQXBpIiwiYXVkIjoiVXBwYmVhdCJ9.nyziKc7o124Gtcv-U0obB-oCYbHSeYvyDAVpkwyME5w
+bite sound: https://www.myinstants.com/en/instant/pokemon-item-found-50824/
+https://www.myinstants.com/media/sounds/pokemon-red_blue_yellow-item-found-sound-effect.mp3
