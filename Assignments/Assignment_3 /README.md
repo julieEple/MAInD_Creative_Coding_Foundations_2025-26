@@ -55,7 +55,7 @@ Lastly I define and fill the snake with 3 cells, so that it is not empty to begi
 # Now the build:
 
 I have 3 main structures – the grid/cells, the snake and the apples.
-The grid, which is a 2D Array of rows each with 12 column-cells. Every cell is its own element, and can be accessed by [row-index][column-index]. This is how the snake and the apples take form. Every cell in the grid-array represents one cell, which is used to draw the snake and the apple (both regular arrays of cells that have/are the qualities row and colum).
+The grid, which is a 2D Array of rows each with 12 column-cells. Every cell is its own element, and it contains the values of coordinates [row-index][column-index]. This is how the snake and the apples take form. Every cell in the grid-array represents one cell, which is used to draw the snake and the apple (both regular arrays of cells that have/are the qualities row and colum).
 
 Summ: Grid is a 2D array of rows with (column-)cells. The apples and the snake are visualised by accessing different cell-elements, which can be found in the resepctive array.
 
